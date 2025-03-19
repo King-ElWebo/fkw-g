@@ -172,13 +172,19 @@ color: #ffffff;
             <div class="col-md-7">
                 <h2 class="fw-bold"><?php echo esc_html(get_field('was_uberschrift_1', $page_id)); ?></h2>
                 <p><?php echo nl2br(esc_html(get_field('was_text_1', $page_id))); ?></p>
+                <ul>
+                    <?php for ($i = 1; $i <= 4; $i++): ?>
+                        <?php $punkt = get_field("was_punkt_1_$i", $page_id); ?>
+                        <?php if (!empty($punkt)): ?>
+                            <li><?php echo esc_html($punkt); ?></li>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+                </ul>
             </div>
             <div class="col-md-4 offset-md-1">
                 <?php $bild = get_field("was_bild_1", $page_id); ?>
                 <?php if (!empty($bild) && isset($bild['url'])): ?>
                     <img src="<?php echo esc_url($bild['url']); ?>" class="img-fluid" alt="<?php echo esc_attr($bild['alt']); ?>">
-                <?php else: ?>
-                    <p style="color: red;">Kein Bild gefunden oder ACF-Feld falsch konfiguriert.</p>
                 <?php endif; ?>
             </div>
         </div>
@@ -208,13 +214,19 @@ color: #ffffff;
                 <?php $bild = get_field("was_bild_2", $page_id); ?>
                 <?php if (!empty($bild) && isset($bild['url'])): ?>
                     <img src="<?php echo esc_url($bild['url']); ?>" class="img-fluid" alt="<?php echo esc_attr($bild['alt']); ?>">
-                <?php else: ?>
-                    <p style="color: red;">Kein Bild gefunden oder ACF-Feld falsch konfiguriert.</p>
                 <?php endif; ?>
             </div>
             <div class="col-md-6 order-1 order-md-2">
                 <h2 class="fw-bold mb-4"><?php echo esc_html(get_field('was_uberschrift_3', $page_id)); ?></h2>
                 <p><?php echo nl2br(esc_html(get_field('was_text_3', $page_id))); ?></p>
+                <ul>
+                    <?php for ($i = 1; $i <= 4; $i++): ?>
+                        <?php $punkt = get_field("was_punkt_3_$i", $page_id); ?>
+                        <?php if (!empty($punkt)): ?>
+                            <li><?php echo esc_html($punkt); ?></li>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+                </ul>
             </div>
         </div>
     </div>
@@ -235,13 +247,20 @@ color: #ffffff;
             <div class="col-md-6 mb-3 mb-md-0">
                 <h2 class="fw-bold mb-4"><?php echo esc_html(get_field('was_uberschrift_5', $page_id)); ?></h2>
                 <p><?php echo nl2br(esc_html(get_field('was_text_5', $page_id))); ?></p>
+                <ul>
+                    <?php for ($i = 1; $i <= 3; $i++): ?>
+                        <?php $punkt = get_field("was_punkt_5_$i", $page_id); ?>
+                        <?php if (!empty($punkt)): ?>
+                            <li><?php echo esc_html($punkt); ?></li>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+                </ul>
+                <p><?php echo nl2br(esc_html(get_field('was_text_6', $page_id))); ?></p>
             </div>
             <div class="col-md-6">
                 <?php $bild = get_field("was_bild_3", $page_id); ?>
                 <?php if (!empty($bild) && isset($bild['url'])): ?>
                     <img src="<?php echo esc_url($bild['url']); ?>" class="img-fluid" alt="<?php echo esc_attr($bild['alt']); ?>"><br>
-                <?php else: ?>
-                    <p style="color: red;">Kein Bild gefunden oder ACF-Feld falsch konfiguriert.</p>
                 <?php endif; ?>
                 <div class="text-center mt-3">
                   <a class="btn btn-danger" href="#">Spenden</a>

@@ -51,27 +51,13 @@ p {
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.3) !important;
       z-index: -1;
     }
     .section-bg {
       background: #f0f0f0;
     }
     /* Beispielhintergrund für andere Sektionen (optional) */
-    .section-bg {
-      background: #f0f0f0;
-    }
-
-  .hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Schwarze halbtransparente Farbe */
-    z-index: -1;
-  }
 
   .hero-section h1 {
     font-family: 'Poppins', sans-serif;
@@ -163,12 +149,12 @@ color: #ffffff;
       justify-content: center;
     }
     .kostenlos {
-      font-size: 20px !important;
+      font-size: 30px !important;
       font-weight: 400 !important;
     } 
   </style>
 </head>
-<body class="m-0 p-0">
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="50" tabindex="0" class="m-0 p-0">
 
 
   <?php if (current_user_can('edit_posts')) : ?>
@@ -186,7 +172,7 @@ color: #ffffff;
 </section>
 
 <!-- Pflege daheim -->
-<section class="min-vh-100 d-flex align-items-center section-bg">
+<section id="pflege-container" class="min-vh-100 d-flex align-items-center section-bg">
     <div class="container text-center">
         <h2 class="fw-bold"><?php echo esc_html(get_field('pflege_uberschrift', $page_id)); ?></h2>
         <p><?php echo nl2br(esc_html(get_field('pflege_text', $page_id))); ?></p>
@@ -195,22 +181,26 @@ color: #ffffff;
         <div class="col">
             <!-- Die Card selbst und das Body als Flex-Container -->
             <div class="card h-100 d-flex flex-column">
-                <?php $bild = get_field("pflege_bild_$i", $page_id); ?>
-                <?php if (!empty($bild) && isset($bild['url'])): ?>
-                    <img src="<?php echo esc_url($bild['url']); ?>" class="card-img-top" alt="Pflege Bild <?php echo $i; ?>">
-                <?php endif; ?>
+    <?php $bild = get_field("pflege_bild_$i", $page_id); ?>
+    <?php if (!empty($bild) && isset($bild['url'])): ?>
+        <img src="<?php echo esc_url($bild['url']); ?>" class="card-img-top" alt="Pflege Bild <?php echo $i; ?>">
+    <?php endif; ?>
 
-                <!-- Card-Body als flexibles Spaltensystem -->
-                <div class="card-body d-flex flex-column">
-                    <h3 class="card-title"><?php echo esc_html(get_field("pflege_titel_$i", $page_id)); ?></h3>
-                    <p class="card-text"><?php echo nl2br(esc_html(get_field("pflege_beschreibung_$i", $page_id))); ?></p>
+    <div class="card-body d-flex flex-column">
+        <h3 class="card-title"><?php echo esc_html(get_field("pflege_titel_$i", $page_id)); ?></h3>
+        <p class="card-text"><?php echo nl2br(esc_html(get_field("pflege_beschreibung_$i", $page_id))); ?></p>
 
-                    <!-- mt-auto drückt den Button nach unten -->
-                    <div class="mt-auto">
-                        <a href="#" class="btn btn-danger justify-content-center">Mehr erfahren</a>
-                    </div>
-                </div>
-            </div>
+        <div class="mt-auto">
+        <?php 
+                                    $button_link = get_field("pflege_button_link_$i", $page_id);
+                                    if (!empty($button_link)):
+                                ?>
+                                    <a href="#<?php echo esc_attr($button_link); ?>" class="btn btn-danger">Mehr erfahren</a>
+                                <?php endif; ?>
+        </div>
+    </div>
+</div>
+
         </div>
     <?php endfor; ?>
 </div>
@@ -219,7 +209,7 @@ color: #ffffff;
 </section>
 
 <!-- Unsere Vision -->
-<section class="min-vh-100 d-flex align-items-center">
+<section id="vision" class="min-vh-100 d-flex align-items-center">
     <div class="container">
       <h2 class="fw-bold text-center mb-4"><?php echo esc_html(get_field('vision_uberschrift', $page_id)); ?></h2>
         <div class="row align-items-center">
@@ -240,19 +230,32 @@ color: #ffffff;
 
 
 <!-- Was wir tun -->
-<section class="min-vh-100 d-flex align-items-center section-bg">
+<section id="wir" class="min-vh-100 d-flex align-items-center section-bg">
     <div class="container">
-      <h2 class="fw-bold text-center mb-4"><?php echo esc_html(get_field('was_uberschrift', $page_id)); ?></h2>
+        <h2 class="fw-bold text-center mb-4">
+            <?php echo esc_html(get_field('was_uberschrift', $page_id)); ?>
+        </h2>
         <div class="row align-items-center">
-          <div class="col-md-6 mt-3 mt-md-0">
-              <?php 
-              $bild3 = get_field('was_bild', $page_id);
-              if (!empty($bild3) && is_array($bild3) && isset($bild3['url'])): ?>
-                  <img src="<?php echo esc_url($bild3['url']); ?>" class="img-fluid" alt="<?php echo esc_attr($bild3['alt']); ?>">
-              <?php endif; ?>
-          </div>
+            <div class="col-md-6 mt-3 mt-md-0">
+                <?php 
+                $bild3 = get_field('was_bild', $page_id);
+                if (!empty($bild3) && is_array($bild3) && isset($bild3['url'])): ?>
+                    <img src="<?php echo esc_url($bild3['url']); ?>" class="img-fluid" alt="<?php echo esc_attr($bild3['alt']); ?>">
+                <?php endif; ?>
+            </div>
             <div class="col-md-6 d-flex flex-column align-items-center">
-                <p><?php echo nl2br(esc_html(get_field('was_text', $page_id))); ?></p>
+            <p class="text-start">
+        <?php echo esc_html(get_field('was_intro_text', $page_id)); ?>
+            </p>
+                <ul>
+                    <li><?php echo esc_html(get_field('was_text_punkt_1', $page_id)); ?></li>
+                    <li><?php echo esc_html(get_field('was_text_punkt_2', $page_id)); ?></li>
+                    <li><?php echo esc_html(get_field('was_text_punkt_3', $page_id)); ?></li>
+                    <li><?php echo esc_html(get_field('was_text_punkt_4', $page_id)); ?></li>
+                </ul>
+                <p class="mt-3">
+                    <?php echo nl2br(esc_html(get_field('was_text', $page_id))); ?>
+                </p>
                 <a href="/was-wir-tun" class="btn btn-danger mt-3">Weiter lesen</a>
             </div>
         </div>
@@ -260,8 +263,9 @@ color: #ffffff;
 </section>
 
 
+
 <!-- Unsere Geschichte -->
-<section class="min-vh-100 d-flex align-items-center">
+<section id="geschichte" class="min-vh-100 d-flex align-items-center">
   <div class="container text-center">
     <!-- Überschrift vor der Row -->
     <h2 class="fw-bold mb-5">
@@ -288,7 +292,7 @@ color: #ffffff;
 
 
 <!-- Über Uns -->
-<section class="min-vh-100 d-flex flex-column justify-content-center align-items-center section-bg">
+<section id="uns" class="min-vh-100 d-flex flex-column justify-content-center align-items-center section-bg">
     <div class="container text-center">
         <h2 class="fw-bold mb-4"><?php echo esc_html(get_field('uns_uberschrift', $page_id)); ?></h2>
         <p><?php echo nl2br(esc_html(get_field('uns_text', $page_id))); ?></p>
@@ -301,6 +305,7 @@ color: #ffffff;
     <div class="container text-center">
         <h2 class="fw-bold mb-4"><?php echo esc_html(get_field('freiwillige_uberschrift', $page_id)); ?></h2>
         <p><?php echo nl2br(esc_html(get_field('freiwillige_text', $page_id))); ?></p>
+        <a class="btn btn-danger" href="/spenden">Spenden</a>
     </div>
 </section>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

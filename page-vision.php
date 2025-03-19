@@ -220,8 +220,17 @@ color: #ffffff;
     <div class="container">
         <h2 class="fw-bold mb-4"><?php echo esc_html(get_field('vision_uberschrift_4', get_the_ID())); ?></h2>
         <p><?php echo nl2br(esc_html(get_field('vision_text_4', get_the_ID()))); ?></p>
+        <ul>
+            <?php for ($i = 1; $i <= 4; $i++): ?>
+                <?php $punkt = get_field("vision_punkt_$i", get_the_ID()); ?>
+                <?php if (!empty($punkt)): ?>
+                    <li><?php echo esc_html($punkt); ?></li>
+                <?php endif; ?>
+            <?php endfor; ?>
+        </ul>
     </div>
 </section>
+
 
 <!-- A5 -->
 <section class="min-vh-100 d-flex align-items-center">
@@ -240,7 +249,7 @@ color: #ffffff;
                     <p style="color: red;">Kein Bild gefunden oder ACF-Feld falsch konfiguriert.</p>
                 <?php endif; ?>
                 <div class="d-flex justify-content-center mt-3">
-                    <a class="btn btn-danger" href="#">Mitglied werden</a><br><br>
+                    <a class="btn btn-danger" href="/mitglied-werden">Mitglied werden</a><br><br>
                   </div>
                   <p class="text-center"><strong class="text-center">Die Mitgliedschaft ist kostenlos</strong></p>
             </div>

@@ -160,9 +160,12 @@ color: #ffffff;
     <div class="container py-5 text-center">
         <h1 class="mb-5 text-center"><?php echo esc_html(get_field('mitglied_hauptuberschrift', $page_id)); ?></h1>
         <h2 class="fw-bold text-center mb-4"><?php echo esc_html(get_field('mitglied_uberschrift_1', $page_id)); ?></h2>
-        <p class="text-center"><?php echo nl2br(esc_html(get_field('mitglied_text_1', $page_id))); ?></p>
+        <p class="text-center" style="color: red;"><?php echo nl2br(esc_html(get_field('mitglied_text_1', $page_id))); ?></p>
         <br>
-        <a href="#" class="btn btn-danger">Mitglied werden</a>
+        <a href="<?php echo get_template_directory_uri(); ?>/pdf/mitglied.pdf" download class="btn btn-danger">
+  Mitglied werden
+</a>
+
     </div>
 </section>
 
@@ -180,7 +183,7 @@ color: #ffffff;
         <br>
         <h2 class="fw-bold mb-4"><?php echo esc_html(get_field('mitglied_uberschrift_3', $page_id)); ?></h2>
         <p><?php echo nl2br(esc_html(get_field('mitglied_text_3', $page_id))); ?></p>
-        <a href="#" class="btn btn-danger mt-3">Kontakt</a>
+        <a href="mailto:team@fkw-g.at" class="btn btn-danger mt-3">Kontakt</a>
     </div>
 </section>
 

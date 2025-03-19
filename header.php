@@ -67,7 +67,7 @@ $spenden_bild = get_field('spenden_bild', $homepage_id);
                 <li class="nav-item"><a class="nav-link" href="/geschichte">Unsere Geschichte</a></li>
                 <li class="nav-item"><a class="nav-link" href="/ueber-uns">Über uns</a></li>
                 <li class="nav-item"><a class="nav-link" href="/mitglied-werden">Mitglied werden</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Kontakt</a></li>
+                <li class="nav-item"><a class="nav-link" href="mailto:team@fkw-g.at">Kontakt</a></li>
             </ul>
 
             <!-- Spenden-Button mit Bild -->
@@ -75,7 +75,7 @@ $spenden_bild = get_field('spenden_bild', $homepage_id);
             <a class="navbar-brand" href="<?php echo home_url(); ?>">
             <img class="navimg" src="<?php echo get_template_directory_uri(); ?>/assets/images/Spendenbutton.jpg" alt="Standard-Logo" height="30">
             </a>
-                <a class="nav-link fw-bold" href="#">Spenden</a>
+                <a class="nav-link fw-bold" href="/spenden">Spenden</a>
             </div>
         </div>
     </div>

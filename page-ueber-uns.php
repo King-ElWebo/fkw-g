@@ -163,7 +163,9 @@ color: #ffffff;
         <h1 class="mb-5 text-center"><?php echo esc_html(get_field('ueber_hauptuberschrift', $page_id)); ?></h1>
         <div class="row align-items-center g-4">
             <p><?php echo nl2br(esc_html(get_field('ueber_text_1', $page_id))); ?></p>
-            <a class="justify-content-center text-center" href="/statuten" class="btn btn-danger">Statuten</a>
+            <div class="justify-content-center text-center">
+              <a class="justify-content-center text-center btn btn-danger" href="/statuten" >Statuten</a>
+            </div>
         </div>
 
         <!-- Team Mitglieder -->
