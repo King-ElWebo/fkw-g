@@ -19,6 +19,7 @@ $spenden_bild = get_field('spenden_bild', $homepage_id);
 </head>
 <body>
     <style>
+        
         .navbar {
             background-color: #F6F6F6;
             border-bottom: 2px solid #000;

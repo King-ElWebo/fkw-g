@@ -18,6 +18,10 @@ $page_id = get_queried_object_id();
 </head>
 <body>
 <style>
+  section {
+  padding-top: 100px !important;
+  padding-bottom: 100px !important;
+}
     h2 {
   margin: 2rem; 
 }

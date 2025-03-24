@@ -18,6 +18,10 @@ get_header();
         h2 {
   margin: 2rem; 
 }
+section {
+  padding-top: 100px !important;
+  padding-bottom: 100px !important;
+}
 
 p {
   margin: 1.5rem; 

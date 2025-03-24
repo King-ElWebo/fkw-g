@@ -23,7 +23,10 @@ $page_id = get_queried_object_id();
 p {
   margin: 1.5rem; 
 }
-
+section {
+  padding-top: 100px !important;
+  padding-bottom: 100px !important;
+}
 .hero-section a {
     font-size: 25px;
     color: #ffffff;
@@ -110,7 +113,7 @@ color: #ffffff;
     color:  #1F2937;
   }
   .card-text {
-    font-size: 15px !important;
+    font-size: 20px !important;
     font-weight: 400;
     color: black !important;
   }
