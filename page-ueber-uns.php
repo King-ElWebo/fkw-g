@@ -16,6 +16,11 @@ $page_id = get_queried_object_id();
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
   <style>
+          .card-text {
+        font-size: 20px !important;
+        font-weight: 400;
+        color: black !important;
+      }
     h2 {
       margin: 2rem; 
     }
@@ -118,11 +123,6 @@ $page_id = get_queried_object_id();
       font-size: 25px;
       font-weight: 800;
       color: #1F2937;
-    }
-    .card-text {
-      font-size: 15px !important;
-      font-weight: 400;
-      color: black !important;
     }
     .btn-danger {
       background-color: #B53333;

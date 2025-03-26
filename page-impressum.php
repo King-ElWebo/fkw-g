@@ -50,41 +50,20 @@ get_header();
       text-align: center;
       color: #6c757d;
     }
-    
-    /* --- Responsive Anpassungen --- */
+
     @media (max-width: 576px) {
-      .impressum-header {
-        padding: 20px 0;
-      }
-      .impressum-header h1 {
-        font-size: 2.5rem;
-      }
-      .impressum-section {
-        padding: 20px;
-      }
-      .impressum-section h2 {
-        font-size: 1.5rem;
-      }
-      .impressum-section p {
-        font-size: 0.9rem;
-      }
+      .impressum-header { padding: 20px 0; }
+      .impressum-header h1 { font-size: 2.5rem; }
+      .impressum-section { padding: 20px; }
+      .impressum-section h2 { font-size: 1.5rem; }
+      .impressum-section p { font-size: 0.9rem; }
     }
     @media (min-width: 577px) and (max-width: 768px) {
-      .impressum-header {
-        padding: 30px 0;
-      }
-      .impressum-header h1 {
-        font-size: 2.75rem;
-      }
-      .impressum-section {
-        padding: 30px;
-      }
-      .impressum-section h2 {
-        font-size: 1.6rem;
-      }
-      .impressum-section p {
-        font-size: 1rem;
-      }
+      .impressum-header { padding: 30px 0; }
+      .impressum-header h1 { font-size: 2.75rem; }
+      .impressum-section { padding: 30px; }
+      .impressum-section h2 { font-size: 1.6rem; }
+      .impressum-section p { font-size: 1rem; }
     }
   </style>
 </head>
@@ -96,75 +75,75 @@ get_header();
 
 <div class="container my-5">
   <div class="impressum-section">
-    <h2>Angaben gemäß § 5 TMG</h2>
+    <h2>Angaben gemäß § 5 ECG und Mediengesetz</h2>
     <p>
-      **Friedrich-Karl-Weniger Gesellschaft** –  
-      Verein zur Förderung von Verbesserungen im System der "Pflege daheim" mit Schwerpunkt 24h-Betreuung  
-      <br>ZVR-Nummer: **1102604139**
+      <strong>Friedrich-Karl-Weniger Gesellschaft</strong><br>
+      Verein zur Förderung von Verbesserungen im System der "Pflege daheim" mit Schwerpunkt 24h-Betreuung<br>
+      ZVR-Nummer: <strong>1102604139</strong>
     </p>
     <p>
-      Hütteldorfer Straße  
-      1140 Wien  
-      Österreich
+      Hütteldorfer Straße 248<br>
+      1140 Wien, Österreich
     </p>
     <p>
+      Telefon: <a href="tel:+43 676 3424341">+43 676 3424341</a><br>
       E-Mail: <a href="mailto:team@fkw-g.at">team@fkw-g.at</a>
     </p>
 
     <h2>Vertretung</h2>
     <p>
-      Der Verein wird vertreten durch:  
+      Der Verein wird vertreten durch:<br>
       <strong>Dr. Sabine Rödler</strong> (Präsidentin)
     </p>
 
     <h2>Medieninhaber & Redaktionelle Verantwortung</h2>
     <p>
-      **Medieninhaber**: Friedrich-Karl-Weniger Gesellschaft  
-      **Redaktionelle Verantwortung**: Dr. Sabine Rödler
+      Medieninhaber: Friedrich-Karl-Weniger Gesellschaft<br>
+      Redaktionelle Verantwortung: Dr. Sabine Rödler
+    </p>
+
+    <h2>Blattlinie</h2>
+    <p>
+      Die Website informiert über die Aktivitäten des Vereins sowie über Themen rund um die Verbesserung des Systems der häuslichen Pflege mit besonderem Schwerpunkt auf der 24h-Betreuung.
+    </p>
+
+    <h2>Zweck des Vereins</h2>
+    <p>
+      Der Verein verfolgt das Ziel, Verbesserungen im Bereich Pflege daheim mit Schwerpunkt auf 24h-Betreuung zu fördern und zu unterstützen.
+    </p>
+
+    <h2>Zuständige Behörde</h2>
+    <p>
+      Landespolizeidirektion Wien – Vereinsbehörde<br>
+      Schottenring 7-9, 1010 Wien
     </p>
 
     <h2>Bankverbindung (Spendenkonto)</h2>
     <p>
-      Bank Austria  
-      IBAN: **AT22 1200 0100 4406 6537**
+      Bank Austria<br>
+      IBAN: <strong>AT22 1200 0100 4406 6537</strong>
     </p>
 
-    <h2>Haftungsausschluss</h2>
+    <h2>Datenschutz</h2>
     <p>
-      Die Inhalte dieser Webseite wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und 
-      Aktualität der Inhalte übernehmen wir jedoch keine Gewähr.
-    </p>
-    <p>
-      Als Betreiber dieser Website sind wir für eigene Inhalte nach den allgemeinen Gesetzen verantwortlich.  
-      Wir sind jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder 
-      nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder 
-      Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.
+      Informationen zum Datenschutz finden Sie in unserer <a href="/datenschutz">Datenschutzerklärung</a>.
     </p>
 
-    <h2>Haftung für Links</h2>
+    <h2>EU-Streitschlichtung</h2>
     <p>
-      Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. 
-      Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen.  
-      Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.  
-      Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft.  
-      Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.
+      Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: 
+      <a href="https://ec.europa.eu/consumers/odr/" target="_blank">https://ec.europa.eu/consumers/odr/</a>.<br>
+      Unsere E-Mail-Adresse finden Sie oben im Impressum.
     </p>
 
-    <h2>Urheberrecht</h2>
+    <h2>Haftungsausschluss & Urheberrecht</h2>
     <p>
-      Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem österreichischen Urheberrecht.  
-      Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes 
-      bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind 
-      nur für den privaten, nicht kommerziellen Gebrauch gestattet.
+      Die Inhalte dieser Webseite wurden mit größter Sorgfalt erstellt. Für Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir keine Gewähr. Inhalte und Werke auf dieser Seite unterliegen dem österreichischen Urheberrecht.
     </p>
 
-    <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
-    <p>
-      Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
-    </p>
-
-    <p class="mt-4">
-      Quelle: <a href="https://www.e-recht24.de">eRecht24</a>
+    <p class="mt-4 small text-muted">
+      Technische Umsetzung der Website durch Benjamin Wilk.<br>
+      Benjamin Wilk übernimmt ausdrücklich keine Verantwortung für die Inhalte dieser Webseite.
     </p>
   </div>
 </div>

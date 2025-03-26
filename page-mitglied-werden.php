@@ -214,7 +214,7 @@ $page_id = get_queried_object_id();
         </ul>
         <br>
         <h2 class="fw-bold mb-4"><?php echo esc_html(get_field('mitglied_uberschrift_3', $page_id)); ?></h2>
-        <p><?php echo nl2br(esc_html(get_field('mitglied_text_3', $page_id))); ?></p>
+        <p><?php echo nl2br(esc_html(get_field('mitglied_text_3', $page_id))); ?><a class="text-danger" href="mailto:team@fkw-g.at">team@fkw-g.at</a></p>
         <a href="mailto:team@fkw-g.at" class="btn btn-danger mt-3">Kontakt</a>
     </div>
 </section>

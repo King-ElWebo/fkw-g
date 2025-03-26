@@ -52,48 +52,6 @@ get_header();
       text-align: center;
       color: #6c757d;
     }
-    
-    /* --- Responsive Anpassungen --- */
-    @media (max-width: 576px) {
-      .datenschutz-header {
-        padding: 20px 0;
-      }
-      .datenschutz-header h1 {
-        font-size: 2.5rem;
-      }
-      .datenschutz-section {
-        padding: 20px;
-      }
-      .datenschutz-section h2,
-      .datenschutz-section h3,
-      .datenschutz-section h5 {
-        font-size: 1.5rem;
-      }
-      .datenschutz-section p,
-      .datenschutz-section li {
-        font-size: 0.9rem;
-      }
-    }
-    @media (min-width: 577px) and (max-width: 768px) {
-      .datenschutz-header {
-        padding: 30px 0;
-      }
-      .datenschutz-header h1 {
-        font-size: 2.75rem;
-      }
-      .datenschutz-section {
-        padding: 30px;
-      }
-      .datenschutz-section h2,
-      .datenschutz-section h3,
-      .datenschutz-section h5 {
-        font-size: 1.6rem;
-      }
-      .datenschutz-section p,
-      .datenschutz-section li {
-        font-size: 1rem;
-      }
-    }
   </style>
 </head>
 <body>
@@ -104,6 +62,7 @@ get_header();
 
 <div class="container my-5">
   <div class="datenschutz-section">
+
     <h2>Allgemeine Hinweise</h2>
     <p>
       Die folgenden Hinweise geben einen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, 
@@ -112,17 +71,14 @@ get_header();
 
     <h2>Verantwortliche Stelle</h2>
     <p>
-      <strong>Friedrich-Karl-Weniger Gesellschaft</strong> –  
-      Verein zur Förderung von Verbesserungen im System der "Pflege daheim" mit Schwerpunkt 24h-Betreuung  
-      <br>ZVR-Nummer: **XXXXXX**  
-      <br>Hütteldorfer Straße, 1140 Wien, Österreich
-      <br>Email: <a href="mailto:team@fkw-g.at">team@fkw-g.at</a>
+      <strong>Friedrich-Karl-Weniger Gesellschaft</strong><br>
+      ZVR-Nummer: <strong>1102604139</strong><br>
+      Hütteldorfer Straße 248, 1140 Wien, Österreich<br>
+      E-Mail: <a href="mailto:team@fkw-g.at">team@fkw-g.at</a>
     </p>
 
     <h2>Erhebung und Speicherung personenbezogener Daten</h2>
-    <p>
-      Wenn Sie unsere Webseite besuchen, erfasst unser System automatisch Daten und Informationen. Dies sind insbesondere:
-    </p>
+    <p>Wenn Sie unsere Webseite besuchen, erfasst unser System automatisch Daten und Informationen:</p>
     <ul>
       <li>Browsertyp und -version</li>
       <li>Verwendetes Betriebssystem</li>
@@ -130,86 +86,62 @@ get_header();
       <li>IP-Adresse</li>
       <li>Datum und Uhrzeit des Zugriffs</li>
     </ul>
-    <p>
-      Diese Daten werden anonymisiert und ausschließlich zur statistischen Auswertung sowie zur Verbesserung unserer Webseite genutzt.
-    </p>
+    <p>Diese Daten werden anonymisiert zur statistischen Auswertung sowie zur Verbesserung unserer Webseite genutzt.</p>
 
     <h2>Cookies</h2>
     <p>
-      Unsere Website verwendet Cookies. Diese dienen dazu, unser Angebot nutzerfreundlicher zu gestalten. 
-      Sie können die Speicherung der Cookies in den Einstellungen Ihres Browsers deaktivieren. 
-    </p>
-
-    <h2>SSL-Verschlüsselung</h2>
-    <p>
-      Diese Website nutzt aus Sicherheitsgründen eine SSL-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie an 
-      der Adresszeile des Browsers ("https://") und dem Schloss-Symbol in der Browserzeile.
-    </p>
-
-    <h2>Hosting</h2>
-    <p>
-      Diese Website wird bei <strong>Easyname</strong> gehostet. Der Provider erhebt Logfiles, 
-      um die Sicherheit und Stabilität der Webseite zu gewährleisten.
-    </p>
-
-    <h2>Eingebettete Inhalte von Drittanbietern</h2>
-    <h5>Google Fonts</h5>
-    <p>
-      Unsere Website verwendet Google Fonts zur einheitlichen Darstellung von Schriftarten. Anbieter ist die 
-      <strong>Google Ireland Limited</strong>, Gordon House, Barrow Street, Dublin 4, Irland.
-      Weitere Informationen: 
-      <a href="https://developers.google.com/fonts/faq" target="_blank">Google Fonts FAQ</a> | 
-      <a href="https://policies.google.com/privacy?hl=de" target="_blank">Google Datenschutzerklärung</a>
-    </p>
-
-    <h5>YouTube</h5>
-    <p>
-      Unsere Website bindet Videos von YouTube ein. Anbieter ist die <strong>Google Ireland Limited</strong>. 
-      Sobald Sie ein YouTube-Video starten, wird eine Verbindung zu den Servern von YouTube hergestellt.
-      Weitere Informationen finden Sie in der 
-      <a href="https://policies.google.com/privacy?hl=de" target="_blank">Datenschutzerklärung von Google</a>.
+      Unsere Website verwendet Cookies. Diese dienen dazu, unser Angebot nutzerfreundlicher zu gestalten. Sie können die Speicherung der Cookies in den Einstellungen Ihres Browsers deaktivieren.
     </p>
 
     <h2>Google Analytics</h2>
     <p>
-      Diese Website nutzt den Webanalysedienst Google Analytics. Anbieter ist die Google Ireland Limited. 
-      Google Analytics verwendet Cookies, um eine Analyse der Webseitennutzung zu ermöglichen. 
-      Sie können die Speicherung der Cookies durch eine entsprechende Einstellung Ihrer Browser-Software verhindern.
+      Diese Website nutzt Google Analytics, Anbieter ist Google Ireland Limited. Google Analytics verwendet Cookies, um die Nutzung der Website zu analysieren. Die erzeugten Informationen werden an Google übertragen. Sie können dies durch ein Browser-Plugin oder Browsereinstellungen verhindern.
+      Weitere Infos unter: <a href="https://policies.google.com/privacy?hl=de" target="_blank">Google Datenschutz</a>.
     </p>
+
+    <h2>PayPal-Spenden</h2>
     <p>
-      Weitere Informationen zur Datenverarbeitung durch Google finden Sie unter: 
-      <a href="https://policies.google.com/privacy?hl=de" target="_blank">Google Datenschutz</a>.
+      Wir bieten die Möglichkeit, via PayPal Spenden zu tätigen (PayPal (Europe) S.à r.l. et Cie, S.C.A., Luxembourg). Ihre Zahlungsdaten werden direkt durch PayPal verarbeitet. Details finden Sie in der <a href="https://www.paypal.com/de/webapps/mpp/ua/privacy-full" target="_blank">PayPal Datenschutzerklärung</a>. Wir erhalten lediglich eine Bestätigung der Zahlung und Ihre Kontaktdaten.
+    </p>
+
+    <h2>Anmeldeformular (PDF)</h2>
+    <p>
+      Wir bieten ein PDF-Formular zum Herunterladen. Wenn Sie dieses ausgefüllt zurücksenden, speichern wir die angegebenen Daten ausschließlich zur Vereinsanmeldung und Mitgliederverwaltung. Diese Daten werden nicht an Dritte weitergegeben.
+    </p>
+
+    <h2>Speicherdauer personenbezogener Daten</h2>
+    <p>
+      Wir speichern Daten nur solange nötig oder gesetzlich vorgeschrieben. Nach Ablauf dieser Fristen werden Daten gelöscht.
+    </p>
+
+    <h2>Rechtsgrundlage der Verarbeitung</h2>
+    <p>
+      Wir verarbeiten personenbezogene Daten gemäß Art. 6 DSGVO aufgrund Ihrer Einwilligung, zur Vertragserfüllung, aus rechtlichen Verpflichtungen oder aufgrund berechtigter Interessen.
+    </p>
+
+    <h2>Widerruf Ihrer Einwilligung</h2>
+    <p>
+      Sie können Ihre Einwilligung zur Datenverarbeitung jederzeit widerrufen. Bereits erfolgte Verarbeitungen bleiben unberührt.
     </p>
 
     <h2>Ihre Rechte</h2>
-    <p>Sie haben das Recht auf:</p>
     <ul>
-      <li>Auskunft über Ihre gespeicherten Daten</li>
-      <li>Berichtigung unrichtiger Daten</li>
-      <li>Löschung Ihrer Daten</li>
-      <li>Einschränkung der Verarbeitung</li>
-      <li>Widerspruch gegen die Verarbeitung</li>
+      <li>Auskunft, Berichtigung, Löschung, Einschränkung</li>
+      <li>Widerspruch gegen Verarbeitung</li>
+      <li>Widerruf erteilter Einwilligungen</li>
     </ul>
+
+    <h2>Beschwerderecht bei der Aufsichtsbehörde</h2>
     <p>
-      Wenn Sie Fragen zum Datenschutz haben oder Ihre Rechte wahrnehmen möchten, kontaktieren Sie uns unter 
-      <a href="mailto:team@fkw-g.at">team@fkw-g.at</a>.
+      Österreichische Datenschutzbehörde:<br>
+      Barichgasse 40-42, 1030 Wien<br>
+      E-Mail: <a href="mailto:dsb@dsb.gv.at">dsb@dsb.gv.at</a><br>
+      Web: <a href="https://www.dsb.gv.at" target="_blank">www.dsb.gv.at</a>
     </p>
 
-    <h2>Kontakt</h2>
-    <p>
-      <strong>Friedrich-Karl-Weniger Gesellschaft</strong>  
-      <br>Hütteldorfer Straße, 1140 Wien, Österreich
-      <br>Email: <a href="mailto:team@fkw-g.at">team@fkw-g.at</a>
-    </p>
-
-    <p class="mt-4">
-      Quelle: <a href="https://www.fairesrecht.at/kostenlos-datenschutzerklaerung-erstellen-generator.php">Datenschutzgenerator Österreich DSGVO</a>
-    </p>
   </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
 <?php get_footer(); ?>
