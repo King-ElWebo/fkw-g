@@ -102,14 +102,16 @@ $text2 = get_field('statuten_text_2', $page_id);
                     <?php endif; ?>
 
                     <!-- Bottom PDF Download Bar -->
-                    <div class="fkw-card p-4 text-center mt-5 bg-warm-light border">
-                        <h3 class="h5 fw-bold text-navy mb-2">Vollständiges Dokument archivieren</h3>
-                        <p class="text-secondary small mb-3">Die Statuten liegen auch im Original als druckbares PDF mit offiziellem Deckblatt vor.</p>
+                    <div class="statuten-download-card">
+                        <h3 class="h4 fw-bold mb-2">Statuten als PDF herunterladen</h3>
+                        <p class="text-muted mb-3" style="max-width: 56ch; margin-left: auto; margin-right: auto;">
+                            Die offiziellen Vereinsstatuten der Friedrich-Karl-Weniger Gesellschaft stehen Ihnen als druckbares PDF mit Deckblatt zur Verfügung.
+                        </p>
                         <a href="<?php echo esc_url(get_template_directory_uri() . '/pdf/Statuten mit Logo-Deckblatt.pdf'); ?>" 
                            download="Statuten mit Logo-Deckblatt.pdf" 
-                           class="btn btn-fkw-primary">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                            Statuten (PDF) herunterladen
+                           class="btn btn-danger btn-lg">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Statuten als PDF herunterladen
                         </a>
                     </div>
                 </div>

@@ -51,7 +51,7 @@
                 <p class="footer-credits">
                     Verein zur Förderung von Verbesserungen im System der „Pflege daheim“ mit Schwerpunkt 24h-Betreuung.
                 </p>
-                <p class="small text-light-emphasis mb-2">
+                <p class="small footer-subtext mb-2">
                     ZVR-Zahl: <strong>1102604139</strong><br>
                     Zuständige Behörde: Landespolizeidirektion Wien
                 </p>
@@ -77,7 +77,7 @@
             <!-- Spalte 3: Anschrift & Kontakt -->
             <div class="col-lg-2 col-md-6">
                 <h5>Kontakt</h5>
-                <address class="small text-light-emphasis not-italic mb-2" style="font-style: normal; line-height: 1.6;">
+                <address class="small footer-subtext not-italic mb-2" style="font-style: normal; line-height: 1.6;">
                     Hütteldorfer Straße 248<br>
                     1140 Wien, Österreich
                 </address>
@@ -97,12 +97,12 @@
                 <p class="small footer-credits mb-2">
                     Ihre Spende fördert unsere unabhängige Aufklärungsarbeit für Familien in ganz Österreich.
                 </p>
-                <div class="p-2 rounded" style="background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.12);">
-                    <div class="small text-light-emphasis">Bank: <strong>Bank Austria</strong></div>
-                    <div class="small text-light">IBAN: <strong style="letter-spacing: 0.5px;">AT22 1200 0100 4406 6537</strong></div>
+                <div class="p-3 rounded" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);">
+                    <div class="small footer-subtext mb-1">Bank: <strong class="text-white">Bank Austria</strong></div>
+                    <div class="small text-white">IBAN: <strong style="letter-spacing: 0.5px;">AT22 1200 0100 4406 6537</strong></div>
                 </div>
                 <div class="mt-2">
-                    <a href="<?php echo esc_url(home_url('/spenden')); ?>" class="small text-danger-emphasis text-decoration-underline">Mehr zu Spenden & PayPal &rarr;</a>
+                    <a href="<?php echo esc_url(home_url('/spenden')); ?>" class="small footer-link-highlight">Mehr zu Spenden & PayPal &rarr;</a>
                 </div>
             </div>
         </div>
@@ -117,7 +117,7 @@
                 <a href="<?php echo esc_url(home_url('/impressum')); ?>" class="me-3">Impressum & Offenlegung</a>
                 <a href="<?php echo esc_url(home_url('/datenschutz')); ?>">Datenschutzerklärung</a>
             </div>
-            <div class="col-12 text-center mt-3" style="font-size: 0.8rem; color: #9CA3AF;">
+            <div class="col-12 text-center mt-3" style="font-size: 0.8rem; color: #D1D5DB;">
                 Bilder: &copy; Adobe Stock, Pixabay und andere lizenzfreie Quellen &ndash; verwendet unter Lizenz. Künstlernachweise liegen vor und können auf Anfrage bereitgestellt werden.
             </div>
         </div>

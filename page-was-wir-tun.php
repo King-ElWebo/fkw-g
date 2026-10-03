@@ -5,12 +5,37 @@ Template Name: Was wir tun
 
 get_header();
 $page_id = get_queried_object_id();
+
+$haupttitel = get_field('was_hauptuberschrift', $page_id);
+
+$uberschrift_1 = get_field('was_uberschrift_1', $page_id);
+$text_1        = get_field('was_text_1', $page_id);
+$bild_1        = get_field('was_bild_1', $page_id);
+
+$uberschrift_2 = get_field('was_uberschrift_2', $page_id);
+$text_2        = get_field('was_text_2', $page_id);
+$text_2_hl     = get_field('was_text_2_highlight', $page_id);
+$punkt_1       = get_field('was_punkt_1', $page_id);
+$punkt_2       = get_field('was_punkt_2', $page_id);
+$punkt_3       = get_field('was_punkt_3', $page_id);
+
+$uberschrift_3 = get_field('was_uberschrift_3', $page_id);
+$text_3        = get_field('was_text_3', $page_id);
+$bild_2        = get_field('was_bild_2', $page_id);
+
+$uberschrift_4 = get_field('was_uberschrift_4', $page_id);
+$text_4        = get_field('was_text_4', $page_id);
+
+$uberschrift_5 = get_field('was_uberschrift_5', $page_id);
+$text_5        = get_field('was_text_5', $page_id);
+$text_6        = get_field('was_text_6', $page_id);
+$bild_3        = get_field('was_bild_3', $page_id);
 ?>
 
 <?php if (current_user_can('edit_posts')) : ?>
     <div class="container mt-2">
         <a href="<?php echo esc_url(admin_url('post.php?post=' . $page_id . '&action=edit')); ?>" class="btn btn-outline-secondary btn-sm">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-1"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-1" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
             Seite bearbeiten
         </a>
     </div>
@@ -23,10 +48,7 @@ $page_id = get_queried_object_id();
             <a href="<?php echo esc_url(home_url('/')); ?>">Startseite</a> &rsaquo; <span>Was wir tun</span>
         </nav>
         <h1 class="mb-2">
-            <?php 
-            $haupttitel = get_field('was_hauptuberschrift', $page_id);
-            echo !empty($haupttitel) ? esc_html($haupttitel) : 'Was wir tun';
-            ?>
+            <?php echo !empty($haupttitel) ? esc_html($haupttitel) : 'Was wir tun'; ?>
         </h1>
         <p class="lead mb-0" style="max-width: 65ch;">
             Hilfestellung für Familien, Erfahrungsaustausch und das Aufzeigen von Missständen im Pflegesystem.
@@ -39,17 +61,41 @@ $page_id = get_queried_object_id();
     <div class="container">
         <div class="row align-items-center g-5">
             <div class="col-lg-7">
-                <h2 class="fw-bold mb-3"><?php echo esc_html(get_field('was_uberschrift_1', $page_id)); ?></h2>
-                <div class="text-muted">
-                    <?php the_field('was_text_1', $page_id); ?>
+                <span class="badge bg-danger-subtle text-danger mb-2" style="font-size: 0.85rem; font-weight: 600;">Auftrag</span>
+                <h2 class="fw-bold mb-3"><?php echo esc_html(!empty($uberschrift_1) ? $uberschrift_1 : 'Konkrete Hilfestellungen bei Pflegefragen'); ?></h2>
+                <div class="text-secondary mb-3">
+                    <?php echo fkw_render_content($text_1); ?>
                 </div>
+
+                <?php 
+                $punkte_1 = [];
+                for ($i = 1; $i <= 4; $i++) {
+                    $p = get_field("was_punkt_1_$i", $page_id);
+                    if (!empty($p)) $punkte_1[] = $p;
+                }
+                if (!empty($punkte_1)):
+                ?>
+                    <ul class="list-unstyled mb-0 ps-1">
+                        <?php foreach ($punkte_1 as $p): ?>
+                            <li class="d-flex align-items-start gap-2 mb-2">
+                                <span class="text-danger fw-bold fs-5" style="line-height: 1;">&bull;</span>
+                                <span class="text-secondary"><?php echo esc_html($p); ?></span>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
             </div>
             <div class="col-lg-5">
                 <?php 
-                $bild1 = get_field('was_bild_1', $page_id);
-                if (!empty($bild1) && is_array($bild1) && isset($bild1['url'])): ?>
-                    <div class="fkw-card p-2">
-                        <img src="<?php echo esc_url($bild1['url']); ?>" alt="<?php echo esc_attr($bild1['alt'] ?? 'Was wir tun'); ?>" class="img-fluid rounded" style="width: 100%; height: auto; max-height: 420px; object-fit: cover;">
+                $img1_src = fkw_get_image_src($bild_1, get_template_directory_uri() . '/assets/images/senior-woman-talking-with-her-doctor.jpg');
+                $img1_alt = fkw_get_image_alt($bild_1, 'Was wir tun – Persönliche Beratung');
+                if (!empty($img1_src)): ?>
+                    <div class="fkw-card p-2 shadow-sm rounded-4 overflow-hidden">
+                        <img src="<?php echo esc_url($img1_src); ?>" 
+                             alt="<?php echo esc_attr($img1_alt); ?>" 
+                             class="img-fluid rounded-3 w-100" 
+                             style="max-height: 420px; object-fit: cover;"
+                             loading="lazy">
                     </div>
                 <?php endif; ?>
             </div>
@@ -61,10 +107,30 @@ $page_id = get_queried_object_id();
 <section class="section section-bg">
     <div class="container">
         <div class="mx-auto" style="max-width: 820px;">
-            <h2 class="fw-bold mb-3"><?php echo esc_html(get_field('was_uberschrift_2', $page_id)); ?></h2>
-            <div class="text-muted">
-                <?php the_field('was_text_2', $page_id); ?>
+            <h2 class="fw-bold mb-3"><?php echo esc_html(!empty($uberschrift_2) ? $uberschrift_2 : 'Unterstützung für Betroffene & Angehörige'); ?></h2>
+            <div class="text-secondary mb-3">
+                <?php echo fkw_render_content($text_2); ?>
             </div>
+
+            <?php if (!empty($text_2_hl)): ?>
+                <div class="p-3 bg-white rounded-3 border-start border-danger border-4 mb-4 shadow-sm">
+                    <strong><?php echo fkw_render_content($text_2_hl); ?></strong>
+                </div>
+            <?php endif; ?>
+
+            <?php 
+            $punkte_2 = array_filter([$punkt_1, $punkt_2, $punkt_3]);
+            if (!empty($punkte_2)):
+            ?>
+                <ul class="list-unstyled mb-0 ps-1">
+                    <?php foreach ($punkte_2 as $p): ?>
+                        <li class="d-flex align-items-start gap-3 mb-2 p-3 bg-white rounded-3 border shadow-sm">
+                            <span class="text-danger fw-bold fs-5" style="line-height: 1;">&bull;</span>
+                            <span class="text-secondary"><?php echo esc_html($p); ?></span>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
         </div>
     </div>
 </section>
@@ -75,18 +141,42 @@ $page_id = get_queried_object_id();
         <div class="row align-items-center g-5">
             <div class="col-lg-5 order-2 order-lg-1">
                 <?php 
-                $bild2 = get_field('was_bild_2', $page_id);
-                if (!empty($bild2) && is_array($bild2) && isset($bild2['url'])): ?>
-                    <div class="fkw-card p-2">
-                        <img src="<?php echo esc_url($bild2['url']); ?>" alt="<?php echo esc_attr($bild2['alt'] ?? 'Erfahrungen teilen'); ?>" class="img-fluid rounded" style="width: 100%; height: auto; max-height: 420px; object-fit: cover;">
+                $img2_src = fkw_get_image_src($bild_2, get_template_directory_uri() . '/assets/images/AdobeStock_256161582.jpg');
+                $img2_alt = fkw_get_image_alt($bild_2, 'Erfahrungen teilen und gemeinsam lernen');
+                if (!empty($img2_src)): ?>
+                    <div class="fkw-card p-2 shadow-sm rounded-4 overflow-hidden">
+                        <img src="<?php echo esc_url($img2_src); ?>" 
+                             alt="<?php echo esc_attr($img2_alt); ?>" 
+                             class="img-fluid rounded-3 w-100" 
+                             style="max-height: 420px; object-fit: cover;"
+                             loading="lazy">
                     </div>
                 <?php endif; ?>
             </div>
             <div class="col-lg-7 order-1 order-lg-2">
-                <h2 class="fw-bold mb-3"><?php echo esc_html(get_field('was_uberschrift_3', $page_id)); ?></h2>
-                <div class="text-muted">
-                    <?php the_field('was_text_3', $page_id); ?>
+                <span class="badge bg-secondary-subtle text-dark border px-3 py-1 mb-2" style="font-size: 0.85rem;">Praxiserfahrung</span>
+                <h2 class="fw-bold mb-3"><?php echo esc_html(!empty($uberschrift_3) ? $uberschrift_3 : 'Erfahrungsaustausch und Wissen'); ?></h2>
+                <div class="text-secondary mb-3">
+                    <?php echo fkw_render_content($text_3); ?>
                 </div>
+
+                <?php 
+                $punkte_3 = [];
+                for ($i = 1; $i <= 4; $i++) {
+                    $p = get_field("was_punkt_3_$i", $page_id);
+                    if (!empty($p)) $punkte_3[] = $p;
+                }
+                if (!empty($punkte_3)):
+                ?>
+                    <ul class="list-unstyled mb-0 ps-1">
+                        <?php foreach ($punkte_3 as $p): ?>
+                            <li class="d-flex align-items-start gap-2 mb-2">
+                                <span class="text-danger fw-bold fs-5" style="line-height: 1;">&bull;</span>
+                                <span class="text-secondary"><?php echo esc_html($p); ?></span>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -96,9 +186,9 @@ $page_id = get_queried_object_id();
 <section class="section section-bg">
     <div class="container">
         <div class="mx-auto" style="max-width: 820px;">
-            <h2 class="fw-bold mb-3"><?php echo esc_html(get_field('was_uberschrift_4', $page_id)); ?></h2>
-            <div class="text-muted">
-                <?php the_field('was_text_4', $page_id); ?>
+            <h2 class="fw-bold mb-3"><?php echo esc_html(!empty($uberschrift_4) ? $uberschrift_4 : 'Interessenvertretung gegenüber Entscheidungsträgern'); ?></h2>
+            <div class="text-secondary">
+                <?php echo fkw_render_content($text_4); ?>
             </div>
         </div>
     </div>
@@ -109,27 +199,54 @@ $page_id = get_queried_object_id();
     <div class="container">
         <div class="row align-items-center g-5">
             <div class="col-lg-7">
-                <h2 class="fw-bold mb-3"><?php echo esc_html(get_field('was_uberschrift_5', $page_id)); ?></h2>
-                <div class="text-muted mb-3">
-                    <?php the_field('was_text_5', $page_id); ?>
+                <span class="badge bg-danger-subtle text-danger mb-2" style="font-size: 0.85rem; font-weight: 600;">Gemeinsam wirken</span>
+                <h2 class="fw-bold mb-3"><?php echo esc_html(!empty($uberschrift_5) ? $uberschrift_5 : 'Fördern Sie unsere Initiative'); ?></h2>
+                <div class="text-secondary mb-3">
+                    <?php echo fkw_render_content($text_5); ?>
                 </div>
-                <div class="text-muted mb-4">
-                    <?php the_field('was_text_6', $page_id); ?>
-                </div>
+
+                <?php 
+                $punkte_5 = [];
+                for ($i = 1; $i <= 3; $i++) {
+                    $p = get_field("was_punkt_5_$i", $page_id);
+                    if (!empty($p)) $punkte_5[] = $p;
+                }
+                if (!empty($punkte_5)):
+                ?>
+                    <ul class="list-unstyled mb-3 ps-1">
+                        <?php foreach ($punkte_5 as $p): ?>
+                            <li class="d-flex align-items-start gap-2 mb-2">
+                                <span class="text-danger fw-bold fs-5" style="line-height: 1;">&bull;</span>
+                                <span class="text-secondary"><?php echo esc_html($p); ?></span>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+
+                <?php if (!empty($text_6)): ?>
+                    <div class="text-secondary mb-4">
+                        <?php echo fkw_render_content($text_6); ?>
+                    </div>
+                <?php endif; ?>
             </div>
             <div class="col-lg-5">
-                <div class="fkw-card text-center p-4">
+                <div class="fkw-card text-center p-4 p-md-5 shadow-sm rounded-4 border bg-white">
                     <?php 
-                    $bild3 = get_field('was_bild_3', $page_id);
-                    if (!empty($bild3) && is_array($bild3) && isset($bild3['url'])): ?>
-                        <img src="<?php echo esc_url($bild3['url']); ?>" alt="<?php echo esc_attr($bild3['alt'] ?? 'Freiwillige Spende'); ?>" class="img-fluid rounded mb-3" style="max-height: 240px; object-fit: cover;">
+                    $img3_src = fkw_get_image_src($bild_3, get_template_directory_uri() . '/assets/images/Spendenbutton.png');
+                    $img3_alt = fkw_get_image_alt($bild_3, 'Freiwillige Spende');
+                    if (!empty($img3_src)): ?>
+                        <img src="<?php echo esc_url($img3_src); ?>" 
+                             alt="<?php echo esc_attr($img3_alt); ?>" 
+                             class="img-fluid rounded-3 mb-3" 
+                             style="max-height: 200px; object-fit: contain;"
+                             loading="lazy">
                     <?php endif; ?>
-                    <h3 class="h5 mb-2">Unterstützen Sie unsere Arbeit</h3>
+                    <h3 class="h5 fw-bold text-navy mb-2">Unterstützen Sie unsere Arbeit</h3>
                     <p class="small text-muted mb-3">
                         Ihre Spende hilft uns, Leitfäden zu drucken, Beratungsanfragen zu bearbeiten und Familien beizustehen.
                     </p>
-                    <a class="btn btn-danger w-100" href="<?php echo esc_url(home_url('/spenden')); ?>">
-                        Freiwillig spenden
+                    <a class="btn btn-danger w-100 py-2" href="<?php echo esc_url(home_url('/spenden')); ?>">
+                        Freiwillig spenden &rarr;
                     </a>
                 </div>
             </div>

@@ -52,11 +52,11 @@ if (function_exists('wp_body_open')) {
         <div class="container">
             <!-- Vereins-Logo -->
             <a class="navbar-brand" href="<?php echo esc_url(home_url('/')); ?>" aria-label="Friedrich-Karl-Weniger Gesellschaft Startseite">
-                <?php if (!empty($logo_bild) && isset($logo_bild['url'])) : ?>
-                    <img src="<?php echo esc_url($logo_bild['url']); ?>" alt="<?php echo esc_attr($logo_bild['alt'] ?? 'Friedrich-Karl-Weniger Gesellschaft Logo'); ?>">
-                <?php else: ?>
-                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/LOGO_Verein_Weniger_Reinzeichnung_Pfade.png'); ?>" alt="Friedrich-Karl-Weniger Gesellschaft Logo">
-                <?php endif; ?>
+                <?php 
+                $logo_src = fkw_get_image_src($logo_bild, get_template_directory_uri() . '/assets/images/LOGO_Verein_Weniger_Reinzeichnung_Pfade.png');
+                $logo_alt = fkw_get_image_alt($logo_bild, 'Friedrich-Karl-Weniger Gesellschaft Logo');
+                ?>
+                <img src="<?php echo esc_url($logo_src); ?>" alt="<?php echo esc_attr($logo_alt); ?>">
                 <span class="navbar-brand-tagline">
                     <strong>FKW-G</strong><br>
                     Für würdevolle Pflege daheim
@@ -69,7 +69,7 @@ if (function_exists('wp_body_open')) {
             </button>
 
             <!-- Menü-Inhalt (Desktop & mobiler Drawer) -->
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav" role="dialog" aria-modal="false" aria-label="Menünavigation">
                 <button class="nav-close-btn d-xl-none" type="button" aria-label="Menü schließen">&times;</button>
                 
                 <ul class="navbar-nav mx-auto mb-2 mb-xl-0">
@@ -92,7 +92,7 @@ if (function_exists('wp_body_open')) {
                         <a<?php echo fkw_nav_active_attr('news'); ?> href="<?php echo esc_url(home_url('/news')); ?>">News</a>
                     </li>
                     <li class="nav-item">
-                        <a<?php echo fkw_nav_active_attr('download'); ?> href="<?php echo esc_url(home_url('/download')); ?>">Tipps u. Infos</a>
+                        <a<?php echo fkw_nav_active_attr('download'); ?> href="<?php echo esc_url(home_url('/download')); ?>">Tipps &amp; Infos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="mailto:team@fkw-g.at" title="E-Mail an team@fkw-g.at senden">Kontakt</a>
@@ -100,11 +100,8 @@ if (function_exists('wp_body_open')) {
                 </ul>
 
                 <div class="nav-actions">
-                    <a class="btn btn-outline-dark btn-sm d-none d-xxl-inline-flex" href="<?php echo esc_url(home_url('/mitglied-werden')); ?>">
-                        Mitglied werden
-                    </a>
                     <a class="btn btn-danger btn-sm" href="<?php echo esc_url(home_url('/spenden')); ?>">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="me-1"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="me-1" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                         Spenden
                     </a>
                 </div>

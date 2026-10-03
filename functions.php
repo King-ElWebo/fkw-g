@@ -147,6 +147,78 @@ function fkw_get_monogram($name) {
 }
 
 /**
+ * Universeller ACF-Bild-Quellpfad-Helper:
+ * Unterstützt Array (['url']), Attachment-ID (numerisch) oder String-URL
+ */
+function fkw_get_image_src($field, $default = '') {
+    if (empty($field)) return $default;
+    if (is_array($field) && !empty($field['url'])) {
+        return $field['url'];
+    }
+    if (is_numeric($field)) {
+        $url = function_exists('wp_get_attachment_image_url') ? wp_get_attachment_image_url((int)$field, 'large') : '';
+        return $url ?: $default;
+    }
+    if (is_string($field) && trim($field) !== '') {
+        return $field;
+    }
+    return $default;
+}
+
+/**
+ * Universeller ACF-Bild-Alt-Text-Helper:
+ * Liefert den Alt-Text aus Array, Attachment-Metadaten oder Fallback
+ */
+function fkw_get_image_alt($field, $default = '') {
+    if (empty($field)) return $default;
+    if (is_array($field) && !empty($field['alt'])) {
+        return $field['alt'];
+    }
+    if (is_numeric($field) && function_exists('get_post_meta')) {
+        $alt = get_post_meta((int)$field, '_wp_attachment_image_alt', true);
+        if (!empty($alt)) return $alt;
+    }
+    return $default;
+}
+
+/**
+ * Flexibler Inhalts-Renderer für Text- und Textarea-/WYSIWYG-Felder:
+ * Gibt formatiertes HTML (falls HTML-Tags enthalten) oder sauberes nl2br() aus
+ */
+function fkw_render_content($content, $default = '') {
+    $text = !empty($content) ? $content : $default;
+    if (empty($text)) return '';
+    // Enthält der Text HTML-Tags?
+    if (preg_match('/<[a-z][\s\S]*>/i', $text)) {
+        return function_exists('wp_kses_post') ? wp_kses_post($text) : $text;
+    }
+    return nl2br(function_exists('esc_html') ? esc_html($text) : htmlspecialchars($text, ENT_QUOTES, 'UTF-8'));
+}
+
+/**
+ * Button-Link-Helper:
+ * Bereinigt und formatiert Links (z.B. "#wir", "wir", "/was-wir-tun" oder externe Links)
+ */
+function fkw_esc_button_link($link, $default = '#') {
+    if (empty($link)) return $default;
+    $trimmed = trim($link);
+    if ($trimmed === '' || $trimmed === '#') return $default;
+    // Wenn reiner Anker ohne Hash übergeben wurde (z.B. "vision" oder "wir")
+    if (preg_match('/^[a-zA-Z0-9_\-]+$/', $trimmed)) {
+        // Prüfe ob bekannter interner Slug oder reiner Sprunganker
+        $known_slugs = ['vision', 'was-wir-tun', 'geschichte', 'ueber-uns', 'mitglied-werden', 'download', 'spenden', 'news', 'statuten', 'impressum', 'datenschutz'];
+        if (in_array(strtolower($trimmed), $known_slugs)) {
+            return function_exists('home_url') ? esc_url(home_url('/' . strtolower($trimmed))) : '/' . strtolower($trimmed);
+        }
+        return '#' . $trimmed;
+    }
+    if (strpos($trimmed, '#') === 0 || strpos($trimmed, '/') === 0 || preg_match('/^https?:\/\//i', $trimmed) || strpos($trimmed, 'mailto:') === 0) {
+        return function_exists('esc_url') ? esc_url($trimmed) : $trimmed;
+    }
+    return function_exists('esc_url') ? esc_url($trimmed) : $trimmed;
+}
+
+/**
  * SEO & Schema.org Structured Data
  */
 function fkw_output_seo_and_schema() {

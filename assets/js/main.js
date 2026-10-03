@@ -116,14 +116,41 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    // Menü bei Klick auf Links schließen
-    var navLinks = navCollapse.querySelectorAll('.nav-link');
+    // Barrierefreie Fokusfalle (Focus Trap) im geöffneten Drawer
+    navCollapse.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab' || !navCollapse.classList.contains('show')) return;
+      var focusables = navCollapse.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      if (focusables.length === 0) return;
+      var firstElem = focusables[0];
+      var lastElem = focusables[focusables.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstElem) {
+          lastElem.focus();
+          e.preventDefault();
+        }
+      } else {
+        if (document.activeElement === lastElem) {
+          firstElem.focus();
+          e.preventDefault();
+        }
+      }
+    });
+
+    // Menü bei Klick auf Links oder bei Bildschirmvergrößerung schließen
+    var navLinks = navCollapse.querySelectorAll('.nav-link, .btn');
     navLinks.forEach(function (link) {
       link.addEventListener('click', function () {
         if (window.innerWidth < 1200) {
           closeMobileMenu();
         }
       });
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 1200 && navCollapse.classList.contains('show')) {
+        closeMobileMenu();
+      }
     });
   }
 

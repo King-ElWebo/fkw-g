@@ -21,6 +21,11 @@ $text1 = get_field('mitglied_text_1', $page_id);
 $uberschrift2 = get_field('mitglied_uberschrift_2', $page_id);
 $text2 = get_field('mitglied_text_2', $page_id);
 $text3 = get_field('mitglied_text_3', $page_id);
+$vorteil_1 = get_field('mitglied_vorteil_1', $page_id);
+$vorteil_2 = get_field('mitglied_vorteil_2', $page_id);
+$vorteil_3 = get_field('mitglied_vorteil_3', $page_id);
+$vorteil_4 = get_field('mitglied_vorteil_4', $page_id);
+$vorteile = array_filter([$vorteil_1, $vorteil_2, $vorteil_3, $vorteil_4]);
 ?>
 
 <?php if (current_user_can('edit_posts')) : ?>
@@ -80,38 +85,59 @@ $text3 = get_field('mitglied_text_3', $page_id);
                         ?>
                     </div>
 
-                    <div class="row g-3 mt-4">
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-start gap-3 p-3 bg-white rounded border">
-                                <span class="badge bg-success-subtle text-success p-2 rounded-circle" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;">
-                                    ✓
-                                </span>
-                                <div>
-                                    <h3 class="h6 fw-bold mb-1">100 % beitragsfrei</h3>
-                                    <p class="small text-muted mb-0">Keine Mitgliedsbeiträge, keine versteckten Kosten.</p>
+                    <?php if (!empty($vorteile)): ?>
+                        <div class="row g-3 mt-4">
+                            <?php foreach ($vorteile as $vort): ?>
+                                <div class="col-sm-6">
+                                    <div class="d-flex align-items-start gap-3 p-3 bg-white rounded border shadow-sm h-100">
+                                        <span class="badge bg-success-subtle text-success p-2 rounded-circle" style="width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                            ✓
+                                        </span>
+                                        <div>
+                                            <p class="small fw-semibold text-navy mb-0"><?php echo esc_html($vort); ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php else: ?>
+                        <div class="row g-3 mt-4">
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-start gap-3 p-3 bg-white rounded border shadow-sm h-100">
+                                    <span class="badge bg-success-subtle text-success p-2 rounded-circle" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                        ✓
+                                    </span>
+                                    <div>
+                                        <h3 class="h6 fw-bold mb-1">100 % beitragsfrei</h3>
+                                        <p class="small text-muted mb-0">Keine Mitgliedsbeiträge, keine versteckten Kosten.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-start gap-3 p-3 bg-white rounded border shadow-sm h-100">
+                                    <span class="badge bg-danger-subtle text-danger p-2 rounded-circle" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                        ♥
+                                    </span>
+                                    <div>
+                                        <h3 class="h6 fw-bold mb-1">Gemeinsame Stimme</h3>
+                                        <p class="small text-muted mb-0">Stärkung der Interessen von Familien und Betroffenen.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-start gap-3 p-3 bg-white rounded border">
-                                <span class="badge bg-danger-subtle text-danger p-2 rounded-circle" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;">
-                                    ♥
-                                </span>
-                                <div>
-                                    <h3 class="h6 fw-bold mb-1">Gemeinsame Stimme</h3>
-                                    <p class="small text-muted mb-0">Stärkung der Interessen von Familien und Betroffenen.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endif; ?>
                 </div>
 
-                <?php if (!empty($bild1) && isset($bild1['url'])): ?>
+                <?php 
+                $m_img_src = fkw_get_image_src($bild1, get_template_directory_uri() . '/assets/images/holding-hands-8288239_1920.jpg');
+                $m_img_alt = fkw_get_image_alt($bild1, 'Mitgliedschaft Friedrich-Karl-Weniger Gesellschaft');
+                if (!empty($m_img_src)): ?>
                     <div class="col-lg-5">
-                        <div class="fkw-img-frame shadow-sm">
-                            <img src="<?php echo esc_url($bild1['url']); ?>" 
-                                 alt="<?php echo esc_attr(!empty($bild1['alt']) ? $bild1['alt'] : 'Mitgliedschaft FKW-G'); ?>" 
-                                 class="img-fluid rounded" 
+                        <div class="fkw-img-frame shadow-sm rounded-4 overflow-hidden border">
+                            <img src="<?php echo esc_url($m_img_src); ?>" 
+                                 alt="<?php echo esc_attr($m_img_alt); ?>" 
+                                 class="img-fluid rounded-3 w-100" 
+                                 style="max-height: 420px; object-fit: cover;"
                                  loading="lazy">
                         </div>
                     </div>
