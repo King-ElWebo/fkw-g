@@ -1,147 +1,112 @@
 <?php
-/*
-Template Name: Datenschutzerklärung
-*/
+/**
+ * Template Name: Datenschutzerklärung
+ * 
+ * Template for FKW-G Privacy Policy (DSGVO / GDPR).
+ * Preserves all statutory data protection statements and supervisory authority details.
+ */
 
 get_header();
+$page_id = get_queried_object_id();
 ?>
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?php the_title(); ?></title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #f8f9fa;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    .datenschutz-header {
-      background-color: #343a40;
-      color: #ffffff;
-      padding: 40px 0;
-      text-align: center;
-    }
-    .datenschutz-header h1 {
-      margin: 0;
-      font-size: 3rem;
-    }
-    .datenschutz-section {
-      padding: 40px;
-      background-color: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .datenschutz-section h2,
-    .datenschutz-section h3,
-    .datenschutz-section h5 {
-      border-bottom: 2px solid #e9ecef;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-    }
-    .datenschutz-section a {
-      color: #dc3545;
-      text-decoration: none;
-    }
-    .datenschutz-section a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      padding: 15px;
-      text-align: center;
-      color: #6c757d;
-    }
-  </style>
-</head>
-<body>
 
-<header class="datenschutz-header text-center">
-  <h1>Datenschutzerklärung</h1>
-</header>
+<div class="fkw-editorial-page">
+    <header class="fkw-page-header py-5 bg-white border-bottom">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <span class="fkw-badge mb-3">DSGVO &amp; Privatsphäre</span>
+                    <h1 class="fkw-page-title mb-2">Datenschutzerklärung</h1>
+                    <p class="text-muted">Informationen zur Verarbeitung Ihrer Daten gemäß Datenschutz-Grundverordnung (DSGVO)</p>
+                </div>
+            </div>
+        </div>
+    </header>
 
-<div class="container my-5">
-  <div class="datenschutz-section">
+    <section class="py-5 bg-warm-light">
+        <div class="container py-lg-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="card border-0 shadow-sm p-4 p-md-5 bg-white rounded-3">
+                        
+                        <div class="mb-5 pb-4 border-bottom">
+                            <h2 class="h4 fw-bold text-navy mb-3">Allgemeine Hinweise</h2>
+                            <p class="text-secondary mb-0">
+                                Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Beim einfachen Besuch unserer Website werden grundsätzlich keine personenbezogenen Daten verarbeitet oder gespeichert.
+                            </p>
+                        </div>
 
-    <h2>Allgemeine Hinweise</h2>
-    <p>
-      Die folgenden Hinweise geben einen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, 
-      wenn Sie unsere Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
-    </p>
+                        <div class="mb-5 pb-4 border-bottom">
+                            <h2 class="h4 fw-bold text-navy mb-3">Verantwortliche Stelle</h2>
+                            <p class="text-secondary mb-2">
+                                <strong>Friedrich-Karl-Weniger Gesellschaft</strong><br>
+                                ZVR-Nummer: <strong>1102604139</strong><br>
+                                Hütteldorfer Straße 248<br>
+                                1140 Wien, Österreich
+                            </p>
+                            <p class="text-secondary mb-0">
+                                E-Mail: <a href="mailto:team@fkw-g.at" class="text-danger fw-semibold">team@fkw-g.at</a>
+                            </p>
+                        </div>
 
-    <h2>Verantwortliche Stelle</h2>
-    <p>
-      <strong>Friedrich-Karl-Weniger Gesellschaft</strong><br>
-      ZVR-Nummer: <strong>1102604139</strong><br>
-      Hütteldorfer Straße 248, 1140 Wien, Österreich<br>
-      E-Mail: <a href="mailto:team@fkw-g.at">team@fkw-g.at</a>
-    </p>
+                        <div class="mb-5 pb-4 border-bottom">
+                            <h2 class="h4 fw-bold text-navy mb-3">Statistik-Auswertung (Burst Statistics)</h2>
+                            <p class="text-secondary mb-0">
+                                Wir verwenden das datenschutzfreundliche Statistik-Plugin „Burst Statistics“, um anonymisierte Besucherzahlen und Klicks zur redaktionellen Verbesserung unseres Informationsangebots auszuwerten. Dabei werden keine Cookies gesetzt, keine personenbezogenen Daten erfasst und keine Daten an Dritte übermittelt.
+                            </p>
+                        </div>
 
-    <h2>Erhebung und Speicherung personenbezogener Daten</h2>
-    <p>Wenn Sie unsere Webseite besuchen, erfasst unser System automatisch Daten und Informationen:</p>
-    <ul>
-      <li>Browsertyp und -version</li>
-      <li>Verwendetes Betriebssystem</li>
-      <li>Referrer-URL</li>
-      <li>IP-Adresse</li>
-      <li>Datum und Uhrzeit des Zugriffs</li>
-    </ul>
-    <p>Diese Daten werden anonymisiert zur statistischen Auswertung sowie zur Verbesserung unserer Webseite genutzt.</p>
+                        <div class="mb-5 pb-4 border-bottom">
+                            <h2 class="h4 fw-bold text-navy mb-3">Cookies</h2>
+                            <p class="text-secondary mb-0">
+                                Unsere Website verwendet keine Marketing-, Tracking- oder Profiling-Cookies zur Nutzerverfolgung.
+                            </p>
+                        </div>
 
-    <h2>Cookies</h2>
-    <p>
-      Unsere Website verwendet Cookies. Diese dienen dazu, unser Angebot nutzerfreundlicher zu gestalten. Sie können die Speicherung der Cookies in den Einstellungen Ihres Browsers deaktivieren.
-    </p>
+                        <div class="mb-5 pb-4 border-bottom">
+                            <h2 class="h4 fw-bold text-navy mb-3">Freiwillige Spenden über PayPal</h2>
+                            <p class="text-secondary mb-2">
+                                Für freiwillige Online-Spenden binden wir einen Button von PayPal ein. Wenn Sie diesen nutzen, erfolgt die komplette Zahlungsabwicklung ausschließlich über PayPal (Europe) S.à r.l. et Cie, S.C.A., Luxembourg.
+                            </p>
+                            <p class="text-secondary mb-0">
+                                Weitere Informationen zur Datenverarbeitung finden Sie in der 
+                                <a href="https://www.paypal.com/de/webapps/mpp/ua/privacy-full" target="_blank" rel="noopener noreferrer" class="text-danger fw-semibold">Datenschutzerklärung von PayPal</a>.
+                            </p>
+                        </div>
 
-    <h2>Google Analytics</h2>
-    <p>
-      Diese Website nutzt Google Analytics, Anbieter ist Google Ireland Limited. Google Analytics verwendet Cookies, um die Nutzung der Website zu analysieren. Die erzeugten Informationen werden an Google übertragen. Sie können dies durch ein Browser-Plugin oder Browsereinstellungen verhindern.
-      Weitere Infos unter: <a href="https://policies.google.com/privacy?hl=de" target="_blank">Google Datenschutz</a>.
-    </p>
+                        <div class="mb-5 pb-4 border-bottom">
+                            <h2 class="h4 fw-bold text-navy mb-3">Mitgliedsantrag (PDF-Download)</h2>
+                            <p class="text-secondary mb-0">
+                                Das auf der Website bereitgestellte PDF-Formular dient der schriftlichen Vereinsanmeldung. Die Übermittlung und Datenverarbeitung erfolgt offline bzw. per direkter E-Mail-Zusendung und nicht über automatisierte Web-Formulare dieser Seite.
+                            </p>
+                        </div>
 
-    <h2>PayPal-Spenden</h2>
-    <p>
-      Wir bieten die Möglichkeit, via PayPal Spenden zu tätigen (PayPal (Europe) S.à r.l. et Cie, S.C.A., Luxembourg). Ihre Zahlungsdaten werden direkt durch PayPal verarbeitet. Details finden Sie in der <a href="https://www.paypal.com/de/webapps/mpp/ua/privacy-full" target="_blank">PayPal Datenschutzerklärung</a>. Wir erhalten lediglich eine Bestätigung der Zahlung und Ihre Kontaktdaten.
-    </p>
+                        <div class="mb-5 pb-4 border-bottom">
+                            <h2 class="h4 fw-bold text-navy mb-3">Ihre Rechte</h2>
+                            <p class="text-secondary mb-0">
+                                Ihnen stehen grundsätzlich die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung und Widerspruch zu. Da über den rein informativen Besuch unserer Website keine personenbezogenen Nutzerprofile angelegt werden, entfällt in der Praxis eine webbasierte Rechteausübung.
+                            </p>
+                        </div>
 
-    <h2>Anmeldeformular (PDF)</h2>
-    <p>
-      Wir bieten ein PDF-Formular zum Herunterladen. Wenn Sie dieses ausgefüllt zurücksenden, speichern wir die angegebenen Daten ausschließlich zur Vereinsanmeldung und Mitgliederverwaltung. Diese Daten werden nicht an Dritte weitergegeben.
-    </p>
+                        <div>
+                            <h2 class="h4 fw-bold text-navy mb-3">Beschwerderecht bei der Aufsichtsbehörde</h2>
+                            <p class="text-secondary mb-3">
+                                Wenn Sie der Ansicht sind, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt, steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu:
+                            </p>
+                            <div class="p-3 bg-warm-light rounded border text-secondary">
+                                <strong>Österreichische Datenschutzbehörde</strong><br>
+                                Barichgasse 40–42, 1030 Wien<br>
+                                Telefon: +43 1 52 152-0<br>
+                                E-Mail: <a href="mailto:dsb@dsb.gv.at" class="text-navy">dsb@dsb.gv.at</a><br>
+                                Web: <a href="https://www.dsb.gv.at" target="_blank" rel="noopener noreferrer" class="text-danger fw-semibold">www.dsb.gv.at</a>
+                            </div>
+                        </div>
 
-    <h2>Speicherdauer personenbezogener Daten</h2>
-    <p>
-      Wir speichern Daten nur solange nötig oder gesetzlich vorgeschrieben. Nach Ablauf dieser Fristen werden Daten gelöscht.
-    </p>
-
-    <h2>Rechtsgrundlage der Verarbeitung</h2>
-    <p>
-      Wir verarbeiten personenbezogene Daten gemäß Art. 6 DSGVO aufgrund Ihrer Einwilligung, zur Vertragserfüllung, aus rechtlichen Verpflichtungen oder aufgrund berechtigter Interessen.
-    </p>
-
-    <h2>Widerruf Ihrer Einwilligung</h2>
-    <p>
-      Sie können Ihre Einwilligung zur Datenverarbeitung jederzeit widerrufen. Bereits erfolgte Verarbeitungen bleiben unberührt.
-    </p>
-
-    <h2>Ihre Rechte</h2>
-    <ul>
-      <li>Auskunft, Berichtigung, Löschung, Einschränkung</li>
-      <li>Widerspruch gegen Verarbeitung</li>
-      <li>Widerruf erteilter Einwilligungen</li>
-    </ul>
-
-    <h2>Beschwerderecht bei der Aufsichtsbehörde</h2>
-    <p>
-      Österreichische Datenschutzbehörde:<br>
-      Barichgasse 40-42, 1030 Wien<br>
-      E-Mail: <a href="mailto:dsb@dsb.gv.at">dsb@dsb.gv.at</a><br>
-      Web: <a href="https://www.dsb.gv.at" target="_blank">www.dsb.gv.at</a>
-    </p>
-
-  </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
-<?php get_footer(); ?>
+<?php 
+get_footer();

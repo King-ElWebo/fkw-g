@@ -7,279 +7,113 @@ get_header();
 $page_id = get_queried_object_id();
 ?>
 
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php the_title(); ?></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
-    <style>
-      section {
-        padding-top: 100px !important;
-        padding-bottom: 100px !important;
-      }
-      h2 {
-        margin: 2rem; 
-      }
-      p {
-        margin: 1.5rem; 
-      }
-      img {
-        margin: 2rem; 
-      }
-      p {
-        text-align: justify !important;
-      }
-      .section-bg {
-        background: #f0f0f0;
-      }
-      /* Hintergrundbild für das Intro */
-      .intro-section {
-        background: url('https://images.unsplash.com/photo-1593642532933-4b6b3b3f7f3b') 
-                    center center / cover no-repeat;
-      }
-      /* Beispielhintergrund für andere Sektionen (optional) */
-      .section-bg {
-        background: #f0f0f0;
-      }
-      .hero-section {
-        /* Hintergrundbild für die erste Section */
-        background: url('/images/AdobeStock_374846559.jpg') 
-                    center center / cover no-repeat;
-        min-height: 100vh; /* ganze Bildschirmhöhe */
-        position: relative;
-        z-index: 1;
-      }
-      .hero-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5); /* Schwarze halbtransparente Farbe */
-        z-index: -1;
-      }
-      .hero-section h1 {
-        font-family: 'Poppins', sans-serif;
-        font-size: 85px;
-        font-weight: 800; /* ExtraBold */
-      }
-      .hero-section strong {
-        font-family: 'Poppins', sans-serif;
-        font-size: 28px;
-      }
-      .hero-section a {
-        font-size: 25px;
-        color: #ffffff;
-        border-radius: 10px;
-        border-color: white;
-        border-width: 2px;
-        padding: 10px 20px;
-        backdrop-filter: blur(10px); /* Hintergrund verwischen */
-      }
-      .hero-section a:hover {
-        transform: scale(1.1);
-        color: #ffffff;
-        border-radius: 10px;
-        border-color: white;
-        border-width: 2px;
-      }
-      .hero-section p {
-        font-size: 20px;
-        font-weight: 400;
-      }
-      /* Generelle h1-Formatierung */
-      h1 {
-        font-family: 'Poppins', sans-serif;
-        font-size: 70px;
-        font-weight: 800;
-        color:  #1F2937;
-        margin-bottom: 100px !important;
-      }
-      /* Erste Überschrift in der Vision-Sektion kleiner */
-      .vision-section h1 {
-        font-size: 40px;
-      }
-      h2 {
-        font-family: 'Poppins', sans-serif;
-        font-size: 30px;
-        font-weight: 800;
-        color:  #1F2937;
-      }
-      .pflege-section p {
-        font-family: 'Poppins', sans-serif;
-        font-size: 20px;
-        font-weight: 400;
-      }
-      h3 {
-        font-family: 'Poppins', sans-serif;
-        font-size: 25px;
-        font-weight: 800;
-        color:  #1F2937;
-      }
-      .card-text {
-        font-size: 15px !important;
-        font-weight: 400;
-        color: black !important;
-      }
-      .btn-danger {
-        background-color: #B53333;
-        width: 400px;
-        color: white;
-        font-size: 20px;
-      }
-      .btn-danger:hover {
-        background-color: #B53333;
-        color: white;
-        transform: scale(1.1);
-      }
-      .card a {
-        max-width: 250px !important;
-      }
-      p, ul {
-        font-size: 25px;
-      }
-      .card img {
-        max-width: 320px;  /* Maximale Breite */
-        max-height: 200px; /* Maximale Höhe */
-        width: auto;       /* Automatische Skalierung */
-        height: auto;      /* Automatische Skalierung */
-      }
-      img {
-        max-width: 500px;  /* Maximale Breite */
-        max-height: 500px; /* Maximale Höhe */
-        width: auto;       /* Automatische Skalierung */
-        height: auto;      /* Automatische Skalierung */
-      }
-      .center-link {
-        display: flex;
-        justify-content: center;
-      }
-      
-      /* --- Responsive Anpassungen --- */
-
-      /* Mobile Geräte (bis 576px) */
-      @media (max-width: 576px) {
-        /* Button-Anpassung: Maximale Breite auf 200px */
-        .btn, .hero-section a, .btn-danger, .btn-primary {
-          width: 200px !important;
-        }
-        .hero-section h1 {
-          font-size: 45px;
-        }
-        .hero-section a {
-          font-size: 16px;
-          padding: 8px 16px;
-        }
-        h2 {
-          font-size: 20px;
-        }
-        p, ul {
-          font-size: 16px;
-        }
-        img {
-          max-width: 100%;
-          height: auto;
-          margin-left: auto;
-          margin-right: auto;
-        }
-      }
-
-      /* Tablet Geräte (zwischen 577px und 768px) */
-      @media (min-width: 577px) and (max-width: 768px) {
-        /* Button-Anpassung: Maximale Breite auf 200px */
-        .btn, .hero-section a, .btn-danger, .btn-primary {
-          width: 200px !important;
-        }
-        .hero-section h1 {
-          font-size: 60px;
-        }
-        .hero-section a {
-          font-size: 18px;
-          padding: 9px 18px;
-        }
-        h2 {
-          font-size: 25px;
-        }
-        p, ul {
-          font-size: 18px;
-        }
-        img {
-          max-width: 90%;
-          height: auto;
-          margin-left: auto;
-          margin-right: auto;
-        }
-      }
-    </style>
-</head>
-<body class="m-0 p-0">
-
 <?php if (current_user_can('edit_posts')) : ?>
-    <a href="<?php echo admin_url('post.php?post=' . $page_id . '&action=edit'); ?>" class="btn btn-primary position-fixed top-0 end-0 m-3">Bearbeiten</a>
+    <div class="container mt-2">
+        <a href="<?php echo esc_url(admin_url('post.php?post=' . $page_id . '&action=edit')); ?>" class="btn btn-outline-secondary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-1"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            Seite bearbeiten
+        </a>
+    </div>
 <?php endif; ?>
 
-<!-- A1 -->
-<section class="vision-section min-vh-100 d-flex align-items-center">
-    <div class="container py-5">
-        <h1 class="mb-5 text-center"><?php echo nl2br(esc_html(get_field('geschichte_hauptuberschrift', $page_id))); ?></h1>
-        <div class="row align-items-center g-4">
-            <div class="col-md-7">
-                <h2 class="fw-bold"><?php echo esc_html(get_field('geschichte_uberschrift_1', $page_id)); ?></h2>
-                <p><?php echo nl2br(esc_html(get_field('geschichte_text_1', $page_id))); ?></p>
+<!-- Seiten-Header -->
+<section class="section-compact" style="background-color: var(--fkw-surface-subtle); border-bottom: 1px solid var(--fkw-border);">
+    <div class="container py-3">
+        <nav aria-label="Breadcrumb" class="small text-muted mb-2">
+            <a href="<?php echo esc_url(home_url('/')); ?>">Startseite</a> &rsaquo; <span>Unsere Geschichte</span>
+        </nav>
+        <h1 class="mb-2">
+            <?php 
+            $haupttitel = get_field('geschichte_hauptuberschrift', $page_id);
+            echo !empty($haupttitel) ? nl2br(esc_html($haupttitel)) : 'Unsere Geschichte';
+            ?>
+        </h1>
+        <p class="lead mb-0" style="max-width: 65ch;">
+            Die Wurzeln unseres Vereins, der persönliche Anlass und unser Weg zu einer starken Stimme für pflegende Angehörige.
+        </p>
+    </div>
+</section>
+
+<!-- Abschnitt 1: Der Namensgeber & Entstehung -->
+<section class="section">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7">
+                <span class="badge bg-danger-subtle text-danger mb-2" style="font-size: 0.85rem; font-weight: 600;">Persönlicher Hintergrund</span>
+                <h2 class="fw-bold mb-3"><?php echo esc_html(get_field('geschichte_uberschrift_1', $page_id)); ?></h2>
+                <div class="text-muted">
+                    <?php the_field('geschichte_text_1', $page_id); ?>
+                </div>
             </div>
-            <div class="col-md-4 offset-md-1">
-                <?php $bild = get_field("geschichte_bild_1", $page_id); ?>
-                <?php if (!empty($bild) && isset($bild['url'])): ?>
-                    <img src="<?php echo esc_url($bild['url']); ?>" class="img-fluid" alt="<?php echo esc_attr($bild['alt']); ?>">
-                <?php else: ?>
-                    <p style="color: red;">Kein Bild gefunden oder ACF-Feld falsch konfiguriert.</p>
+            <div class="col-lg-5">
+                <?php 
+                $bild = get_field("geschichte_bild_1", $page_id);
+                if (!empty($bild) && isset($bild['url'])): ?>
+                    <div class="fkw-card p-3 text-center">
+                        <img src="<?php echo esc_url($bild['url']); ?>" class="img-fluid rounded mb-3" alt="<?php echo esc_attr($bild['alt'] ?? 'Friedrich Karl Weniger'); ?>" style="max-height: 420px; object-fit: cover;">
+                        <p class="small text-muted mb-0"><strong>Friedrich Karl Weniger</strong> &ndash; Namensgeber des Vereins</p>
+                    </div>
                 <?php endif; ?>
             </div>
         </div>
     </div>
 </section>
 
-<!-- A2 -->
-<section class="min-vh-100 d-flex align-items-center section-bg">
+<!-- Abschnitte 2 & 3: Entstehung & Realität der Pflege daheim -->
+<section class="section section-bg">
     <div class="container">
-        <div class="row d-flex align-items-start">
-            <div class="col-md-6 d-flex flex-column">
-                <h2 class="fw-bold mb-4"><?php echo esc_html(get_field('geschichte_uberschrift_2', $page_id)); ?></h2>
-                <p><?php echo nl2br (esc_html(get_field('geschichte_text_2', $page_id))); ?></p>
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <div class="fkw-card">
+                    <h2 class="h4 fw-bold mb-3"><?php echo esc_html(get_field('geschichte_uberschrift_2', $page_id)); ?></h2>
+                    <div class="text-muted">
+                        <?php the_field('geschichte_text_2', $page_id); ?>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6 d-flex flex-column">
-                <h2 class="fw-bold mb-4"><?php echo esc_html(get_field('geschichte_uberschrift_3', $page_id)); ?></h2>
-                <p><?php echo nl2br(esc_html(get_field('geschichte_text_3', $page_id))); ?></p>
+            <div class="col-lg-6">
+                <div class="fkw-card">
+                    <h2 class="h4 fw-bold mb-3"><?php echo esc_html(get_field('geschichte_uberschrift_3', $page_id)); ?></h2>
+                    <div class="text-muted">
+                        <?php the_field('geschichte_text_3', $page_id); ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- A3 -->
-<section class="min-vh-100 d-flex align-items-center">
+<!-- Abschnitte 4 & 5: Aus Erfahrung lernen & Weitergehen -->
+<section class="section">
     <div class="container">
-        <div class="row d-flex align-items-start">
-            <div class="col-md-6 d-flex flex-column">
-                <h2 class="fw-bold mb-4"><?php echo esc_html(get_field('geschichte_uberschrift_4', $page_id)); ?></h2>
-                <p><?php echo nl2br(esc_html(get_field('geschichte_text_4', $page_id))); ?></p>
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <div class="p-4 rounded-4" style="background-color: var(--fkw-surface); border: 1px solid var(--fkw-border);">
+                    <h2 class="h4 fw-bold mb-3"><?php echo esc_html(get_field('geschichte_uberschrift_4', $page_id)); ?></h2>
+                    <div class="text-muted">
+                        <?php the_field('geschichte_text_4', $page_id); ?>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6 d-flex flex-column">
-                <h2 class="fw-bold mb-4"><?php echo esc_html(get_field('geschichte_uberschrift_5', $page_id)); ?></h2>
-                <p><?php echo nl2br(esc_html(get_field('geschichte_text_5', $page_id))); ?></p>
+            <div class="col-lg-6">
+                <div class="p-4 rounded-4" style="background-color: var(--fkw-surface); border: 1px solid var(--fkw-border);">
+                    <h2 class="h4 fw-bold mb-3"><?php echo esc_html(get_field('geschichte_uberschrift_5', $page_id)); ?></h2>
+                    <div class="text-muted">
+                        <?php the_field('geschichte_text_5', $page_id); ?>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="<?php echo esc_url(home_url('/ueber-uns')); ?>" class="btn btn-outline-dark me-2 mb-2">
+                Das heutige Team kennenlernen
+            </a>
+            <a href="<?php echo esc_url(home_url('/mitglied-werden')); ?>" class="btn btn-danger mb-2">
+                Initiative durch Mitgliedschaft stärken
+            </a>
         </div>
     </div>
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
-</html>
-
-<?php
-get_footer();
-?>
+<?php get_footer(); ?>

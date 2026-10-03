@@ -1,229 +1,239 @@
 <?php
-/*
-Template Name: Mitglied werden
-*/
+/**
+ * Template Name: Mitglied werden
+ * 
+ * Template for FKW-G Membership Application page.
+ * Preserves all ACF fields: mitglied_hauptuberschrift, mitglied_bild_1, 
+ * mitglied_uberschrift_1, mitglied_text_1, mitglied_uberschrift_2, mitglied_text_2, mitglied_text_3
+ * Preserves PDF application download and direct contact workflow.
+ */
 
 get_header();
 $page_id = get_queried_object_id();
+
+$hauptuberschrift = get_field('mitglied_hauptuberschrift', $page_id);
+if (empty($hauptuberschrift)) {
+    $hauptuberschrift = 'Kostenlos Mitglied werden';
+}
+$bild1 = get_field('mitglied_bild_1', $page_id);
+$uberschrift1 = get_field('mitglied_uberschrift_1', $page_id);
+$text1 = get_field('mitglied_text_1', $page_id);
+$uberschrift2 = get_field('mitglied_uberschrift_2', $page_id);
+$text2 = get_field('mitglied_text_2', $page_id);
+$text3 = get_field('mitglied_text_3', $page_id);
 ?>
-
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php the_title(); ?></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
-    <style>
-      section {
-        padding-top: 100px !important;
-        padding-bottom: 100px !important;
-      }
-      h2 {
-        margin: 2rem; 
-      }
-      p {
-        margin: 1.5rem; 
-      }
-      img {
-        margin: 2rem; 
-      }
-      p {
-        text-align: justify !important;
-      }
-      .section-bg {
-        background: #f0f0f0;
-      }
-      /* Hintergrundbild für das Intro */
-      .intro-section {
-        background: url('https://images.unsplash.com/photo-1593642532933-4b6b3b3f7f3b') 
-                    center center / cover no-repeat;
-      }
-      /* Beispielhintergrund für andere Sektionen (optional) */
-      .section-bg {
-        background: #f0f0f0;
-      }
-      .hero-section {
-        /* Hintergrundbild für die erste Section */
-        background: url('/images/AdobeStock_374846559.jpg') 
-                    center center / cover no-repeat;
-        min-height: 100vh; /* ganze Bildschirmhöhe */
-        position: relative;
-        z-index: 1;
-      }
-      .hero-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5); /* Schwarze halbtransparente Farbe */
-        z-index: -1;
-      }
-      .hero-section h1 {
-        font-family: 'Poppins', sans-serif;
-        font-size: 85px;
-        font-weight: 800; /* ExtraBold */
-      }
-      .hero-section strong {
-        font-family: 'Poppins', sans-serif;
-        font-size: 28px;
-      }
-      .hero-section a {
-        font-size: 25px;
-        color: #ffffff;
-        border-radius: 10px;
-        border-color: white;
-        border-width: 2px;
-        padding: 10px 20px;
-        backdrop-filter: blur(10px); /* Hintergrund verwischen */
-      }
-      .hero-section a:hover {
-        transform: scale(1.1);
-        color: #ffffff;
-        border-radius: 10px;
-        border-color: white;
-        border-width: 2px;
-      }
-      .hero-section p {
-        font-size: 20px;
-        font-weight: 400;
-      }
-      /* Generelle h1-Formatierung */
-      h1 {
-        font-family: 'Poppins', sans-serif;
-        font-size: 70px;
-        font-weight: 800;
-        color:  #1F2937;
-        margin-bottom: 100px !important;
-      }
-      h2 {
-        font-family: 'Poppins', sans-serif;
-        font-size: 30px;
-        font-weight: 800;
-        color:  #1F2937;
-      }
-      .pflege-section p {
-        font-family: 'Poppins', sans-serif;
-        font-size: 20px;
-        font-weight: 400;
-      }
-      h3 {
-        font-family: 'Poppins', sans-serif;
-        font-size: 25px;
-        font-weight: 800;
-        color:  #1F2937;
-      }
-      .card-text {
-        font-size: 15px !important;
-        font-weight: 400;
-        color: black !important;
-      }
-      .btn-danger {
-        background-color: #B53333;
-        width: 400px;
-        color: white;
-        font-size: 20px;
-      }
-      .btn-danger:hover {
-        background-color: #B53333;
-        color: white;
-        transform: scale(1.1);
-      }
-      .card a {
-        max-width: 250px !important;
-      }
-      p, ul {
-        font-size: 25px;
-      }
-      .center-link {
-        display: flex;
-        justify-content: center;
-      }
-
-      /* --- Responsive Anpassungen --- */
-
-      /* Mobile Geräte (bis 576px) */
-      @media (max-width: 576px) {
-        /* Buttons: Maximale Breite auf 200px */
-        .btn, .btn-danger, .btn-primary {
-          width: 200px !important;
-        }
-        /* Überschriften in der Vision-Sektion kleiner */
-        .vision-section h1 {
-          font-size: 40px;
-        }
-        .vision-section h2 {
-          font-size: 20px;
-        }
-        /* Text kleiner */
-        p, ul {
-          font-size: 16px;
-        }
-      }
-
-      /* Tablet Geräte (zwischen 577px und 768px) */
-      @media (min-width: 577px) and (max-width: 768px) {
-        /* Buttons: Maximale Breite auf 200px */
-        .btn, .btn-danger, .btn-primary {
-          width: 200px !important;
-        }
-        .vision-section h1 {
-          font-size: 50px;
-        }
-        .vision-section h2 {
-          font-size: 25px;
-        }
-        p, ul {
-          font-size: 18px;
-        }
-      }
-    </style>
-</head>
-<body class="m-0 p-0">
 
 <?php if (current_user_can('edit_posts')) : ?>
-    <a href="<?php echo admin_url('post.php?post=' . $page_id . '&action=edit'); ?>" class="btn btn-primary position-fixed top-0 end-0 m-3">Bearbeiten</a>
-<?php endif; ?>
-
-<!-- A1 -->
-<section class="vision-section min-vh-100 d-flex align-items-center">
-    <div class="container py-5 text-center">
-        <h1 class="mb-5 text-center"><?php echo esc_html(get_field('mitglied_hauptuberschrift', $page_id)); ?></h1>
-        <h2 class="fw-bold text-center mb-4"><?php echo esc_html(get_field('mitglied_uberschrift_1', $page_id)); ?></h2>
-        <p class="text-center" style="color: red;"><?php echo nl2br(esc_html(get_field('mitglied_text_1', $page_id))); ?></p>
-        <br>
-        <a href="<?php echo get_template_directory_uri(); ?>/pdf/mitglied.pdf" download class="btn btn-danger">
-          Mitglied werden
+    <div class="position-fixed top-0 end-0 m-3" style="z-index: 9999;">
+        <a href="<?php echo esc_url(admin_url('post.php?post=' . $page_id . '&action=edit')); ?>" class="btn btn-sm btn-dark shadow-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-1"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Seite bearbeiten
         </a>
     </div>
-</section>
+<?php endif; ?>
 
-<!-- A2 -->
-<section class="min-vh-100 d-flex flex-column justify-content-center align-items-center section-bg">
-    <div class="container">
-        <h2 class="fw-bold mb-4"><?php echo esc_html(get_field('mitglied_uberschrift_2', $page_id)); ?></h2>
-        <p><strong><?php echo nl2br(esc_html(get_field('mitglied_text_2', $page_id))); ?></strong></p>
-        <ul>
-            <li><?php echo esc_html(get_field('mitglied_vorteil_1', $page_id)); ?></li>
-            <li><?php echo esc_html(get_field('mitglied_vorteil_2', $page_id)); ?></li>
-            <li><?php echo esc_html(get_field('mitglied_vorteil_3', $page_id)); ?></li>
-            <li><?php echo esc_html(get_field('mitglied_vorteil_4', $page_id)); ?></li>
-        </ul>
-        <br>
-        <h2 class="fw-bold mb-4"><?php echo esc_html(get_field('mitglied_uberschrift_3', $page_id)); ?></h2>
-        <p><?php echo nl2br(esc_html(get_field('mitglied_text_3', $page_id))); ?><a class="text-danger" href="mailto:team@fkw-g.at">team@fkw-g.at</a></p>
-        <a href="mailto:team@fkw-g.at" class="btn btn-danger mt-3">Kontakt</a>
-    </div>
-</section>
+<div class="fkw-editorial-page">
+    <!-- Header / Hero -->
+    <header class="fkw-page-header py-5 bg-white border-bottom">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-10">
+                    <span class="fkw-badge mb-3">Gemeinschaft &amp; Unterstützung</span>
+                    <h1 class="fkw-page-title mb-3"><?php echo esc_html($hauptuberschrift); ?></h1>
+                    <div class="fkw-lead-text mx-auto" style="max-width: 760px;">
+                        <p class="mb-0">
+                            Die Mitgliedschaft in der Friedrich-Karl-Weniger Gesellschaft ist <strong>vollständig kostenlos</strong>. 
+                            Werden Sie Teil unserer Gemeinschaft und stärken Sie unsere Stimme für pflegende Angehörige und Betroffene in Österreich.
+                        </p>
+                    </div>
+                    <div class="mt-4">
+                        <a href="#mitgliedsantrag" class="btn btn-fkw-primary me-2 mb-2">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Zum Mitgliedsantrag (PDF)
+                        </a>
+                        <a href="<?php echo esc_url(home_url('/statuten/')); ?>" class="btn btn-fkw-outline mb-2">
+                            Vereinsstatuten einsehen
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Section 1: Motivation & Details -->
+    <section class="py-5 bg-warm-light">
+        <div class="container py-lg-4">
+            <div class="row align-items-center g-5">
+                <div class="<?php echo (!empty($bild1) && isset($bild1['url'])) ? 'col-lg-7' : 'col-lg-10 mx-auto'; ?>">
+                    <?php if (!empty($uberschrift1)): ?>
+                        <h2 class="h2 fw-bold text-navy mb-4"><?php echo esc_html($uberschrift1); ?></h2>
+                    <?php else: ?>
+                        <h2 class="h2 fw-bold text-navy mb-4">Warum Ihre Mitgliedschaft einen Unterschied macht</h2>
+                    <?php endif; ?>
 
-</body>
-</html>
+                    <div class="fkw-prose">
+                        <?php 
+                        if (!empty($text1)) {
+                            echo wp_kses_post($text1);
+                        } else {
+                            echo '<p>Als gemeinnütziger Verein setzen wir uns für eine spürbare Entlastung von Familien ein, die Angehörige zu Hause pflegen. Je mehr Menschen hinter unseren Anliegen stehen, desto wirksamer können wir Verbesserungen im System der 24h-Betreuung und Pflege daheim anstoßen.</p>';
+                        }
+                        ?>
+                    </div>
 
-<?php
+                    <div class="row g-3 mt-4">
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-start gap-3 p-3 bg-white rounded border">
+                                <span class="badge bg-success-subtle text-success p-2 rounded-circle" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;">
+                                    ✓
+                                </span>
+                                <div>
+                                    <h3 class="h6 fw-bold mb-1">100 % beitragsfrei</h3>
+                                    <p class="small text-muted mb-0">Keine Mitgliedsbeiträge, keine versteckten Kosten.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-start gap-3 p-3 bg-white rounded border">
+                                <span class="badge bg-danger-subtle text-danger p-2 rounded-circle" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;">
+                                    ♥
+                                </span>
+                                <div>
+                                    <h3 class="h6 fw-bold mb-1">Gemeinsame Stimme</h3>
+                                    <p class="small text-muted mb-0">Stärkung der Interessen von Familien und Betroffenen.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <?php if (!empty($bild1) && isset($bild1['url'])): ?>
+                    <div class="col-lg-5">
+                        <div class="fkw-img-frame shadow-sm">
+                            <img src="<?php echo esc_url($bild1['url']); ?>" 
+                                 alt="<?php echo esc_attr(!empty($bild1['alt']) ? $bild1['alt'] : 'Mitgliedschaft FKW-G'); ?>" 
+                                 class="img-fluid rounded" 
+                                 loading="lazy">
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: How to apply & PDF Download -->
+    <section id="mitgliedsantrag" class="py-5 bg-white border-top border-bottom">
+        <div class="container py-lg-4">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-8">
+                    <?php if (!empty($uberschrift2)): ?>
+                        <h2 class="h2 fw-bold text-navy mb-3"><?php echo esc_html($uberschrift2); ?></h2>
+                    <?php else: ?>
+                        <h2 class="h2 fw-bold text-navy mb-3">So einfach werden Sie Mitglied</h2>
+                    <?php endif; ?>
+                    <p class="text-muted">In drei Schritten zu Ihrer kostenlosen Vereinsmitgliedschaft:</p>
+                </div>
+            </div>
+
+            <!-- 3 Steps -->
+            <div class="row g-4 justify-content-center mb-5">
+                <div class="col-md-4">
+                    <div class="card h-100 border p-4 text-center bg-warm-light">
+                        <div class="step-num mx-auto mb-3" style="width: 44px; height: 44px; border-radius: 50%; background: var(--fkw-crimson); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem;">
+                            1
+                        </div>
+                        <h3 class="h5 fw-bold text-navy mb-2">PDF herunterladen</h3>
+                        <p class="text-secondary small mb-0">Laden Sie den offiziellen Mitgliedsantrag der Friedrich-Karl-Weniger Gesellschaft herunter.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border p-4 text-center bg-warm-light">
+                        <div class="step-num mx-auto mb-3" style="width: 44px; height: 44px; border-radius: 50%; background: var(--fkw-crimson); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem;">
+                            2
+                        </div>
+                        <h3 class="h5 fw-bold text-navy mb-2">Ausfüllen &amp; Unterschreiben</h3>
+                        <p class="text-secondary small mb-0">Füllen Sie das einseitige Formular mit Ihren Kontaktdaten aus und unterschreiben Sie es.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border p-4 text-center bg-warm-light">
+                        <div class="step-num mx-auto mb-3" style="width: 44px; height: 44px; border-radius: 50%; background: var(--fkw-crimson); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem;">
+                            3
+                        </div>
+                        <h3 class="h5 fw-bold text-navy mb-2">Absenden</h3>
+                        <p class="text-secondary small mb-0">Senden Sie uns den Scan oder ein gut lesbares Foto per E-Mail an <a href="mailto:team@fkw-g.at" class="fw-semibold text-danger">team@fkw-g.at</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Download Action Box -->
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="fkw-card p-4 p-md-5 text-center bg-white border shadow-sm">
+                        <?php if (!empty($text2)): ?>
+                            <div class="mb-4 text-secondary">
+                                <?php echo wp_kses_post($text2); ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="d-inline-flex flex-column align-items-center">
+                            <a id="mitglied" 
+                               href="<?php echo esc_url(get_template_directory_uri() . '/pdf/mitglied.pdf'); ?>" 
+                               download="Mitgliedsantrag-FKW-G.pdf" 
+                               class="btn btn-fkw-primary btn-lg px-4 py-3 shadow-sm mb-3">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                Mitgliedsantrag herunterladen (PDF)
+                            </a>
+                            <span class="text-muted small">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-1"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                Offizielles Antragsformular &bull; Format: PDF &bull; Kostenlos
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Questions & Contact -->
+    <section class="py-5 bg-warm-light">
+        <div class="container py-lg-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <span class="fkw-badge mb-3">Fragen &amp; Kontakt</span>
+                    <h2 class="h2 fw-bold text-navy mb-3">Haben Sie Fragen zur Mitgliedschaft?</h2>
+                    
+                    <div class="fkw-prose mb-4">
+                        <?php 
+                        if (!empty($text3)) {
+                            echo wp_kses_post($text3);
+                        } else {
+                            echo '<p>Wir sind gerne persönlich für Sie da. Ob Fragen zum Ablauf, zu den Vereinszielen oder zur Rücksendung des Antrags – schreiben Sie uns jederzeit unkompliziert per E-Mail.</p>';
+                        }
+                        ?>
+                    </div>
+
+                    <div class="fkw-contact-callout p-4 mx-auto text-center" style="max-width: 600px;">
+                        <p class="mb-3 text-secondary">Sie erreichen unser Team direkt unter:</p>
+                        <div class="d-flex flex-wrap align-items-center justify-content-center gap-2 mb-3">
+                            <span class="fkw-email-badge">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                <strong>team@fkw-g.at</strong>
+                            </span>
+                            <button type="button" class="btn-copy" data-copy="team@fkw-g.at" aria-label="E-Mail-Adresse in die Zwischenablage kopieren">
+                                Adresse kopieren
+                            </button>
+                        </div>
+                        <span class="copy-feedback" role="status" aria-live="polite">✓ In die Zwischenablage kopiert!</span>
+                        <div class="mt-3">
+                            <a href="mailto:team@fkw-g.at?subject=Mitgliedschaft%20FKW-G" class="btn btn-fkw-outline btn-sm">
+                                E-Mail-Programm öffnen &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<?php 
 get_footer();
-?>
